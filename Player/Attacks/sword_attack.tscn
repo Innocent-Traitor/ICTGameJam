@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyeewmo3syts3"]
+[gd_scene load_steps=9 format=3 uid="uid://csxxgvlbh8f4y"]
 
-[ext_resource type="Script" path="res://Player/sword_attack.gd" id="1_m0na3"]
+[ext_resource type="Script" path="res://Player/Attacks/sword_attack.gd" id="1_ti6et"]
 [ext_resource type="Texture2D" uid="uid://d2s6gmat54vcl" path="res://Sprites/Items/Weapons/sword.png" id="2_w88mp"]
-[ext_resource type="Texture2D" uid="uid://bgopi62fm8nfv" path="res://Sprites/tile_0100.png" id="3_31631"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uw3sh"]
-radius = 7.07107
-height = 26.8701
+radius = 12.7279
+height = 43.8406
 
 [sub_resource type="Animation" id="Animation_h16gl"]
 resource_name = "Attack1"
@@ -18,10 +17,10 @@ tracks/0/path = NodePath("SwordSprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.25, 0.25), Vector2(1.5, 1.5), Vector2(1.5, 1.5), Vector2(1.5, 1.5)]
+"values": [Vector2(0.25, 0.25), Vector2(2.5, 2.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -45,7 +44,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(25, -15), Vector2(25, -15), Vector2(-25, -15)]
+"values": [Vector2(0, 0), Vector2(50, -30), Vector2(50, -30), Vector2(-50, -25)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -69,7 +68,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(25, -15), Vector2(-25, -15)]
+"values": [Vector2(50, -30), Vector2(-50, -25)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -108,10 +107,10 @@ tracks/0/path = NodePath("SwordSprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.25, 0.25), Vector2(1.5, 1.5), Vector2(1.5, 1.5), Vector2(1.5, 1.5), Vector2(1.5, 1.5)]
+"values": [Vector2(0.25, 0.25), Vector2(2.5, 2.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -135,7 +134,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.3, 0.6, 0.7, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(25, -15), Vector2(25, -15), Vector2(-25, -15), Vector2(-25, -15), Vector2(25, -15)]
+"values": [Vector2(0, 0), Vector2(50, -30), Vector2(50, -30), Vector2(-50, -30), Vector2(-50, -30), Vector2(50, -30)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -159,7 +158,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.3, 0.6, 0.7, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(25, -15), Vector2(-25, -15), Vector2(-25, -15), Vector2(25, -15)]
+"values": [Vector2(50, -30), Vector2(-50, -30), Vector2(-50, -30), Vector2(50, -30)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -201,7 +200,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.25, 0.25), Vector2(1.5, 1.5)]
+"values": [Vector2(0.25, 0.25), Vector2(2.5, 2.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -225,7 +224,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.3, 0.58, 0.7, 1, 1.1, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(25, -15), Vector2(25, -15), Vector2(-25, -15), Vector2(-25, -15), Vector2(25, -15), Vector2(25, -15), Vector2(-25, -15)]
+"values": [Vector2(0, 0), Vector2(50, -30), Vector2(50, -30), Vector2(-50, -30), Vector2(-50, -30), Vector2(50, -30), Vector2(50, -30), Vector2(-50, -30)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -246,10 +245,10 @@ tracks/4/path = NodePath("CollisionShape2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.3, 0.58, 0.7, 1, 1.1, 1.4),
+"times": PackedFloat32Array(0.3, 0.6, 0.7, 1, 1.1, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(25, -15), Vector2(-25, -15), Vector2(-25, -15), Vector2(25, -15), Vector2(25, -15), Vector2(-25, -15)]
+"values": [Vector2(50, -30), Vector2(-50, -30), Vector2(-50, -30), Vector2(50, -30), Vector2(50, -30), Vector2(-50, -30)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -362,15 +361,15 @@ _data = {
 }
 
 [node name="SwordAttack" type="Area2D"]
-script = ExtResource("1_m0na3")
+position = Vector2(0, -1)
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("1_ti6et")
 
 [node name="SwordSprite" type="Sprite2D" parent="."]
 rotation = 0.785398
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_w88mp")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-texture = ExtResource("3_31631")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(25, -15)

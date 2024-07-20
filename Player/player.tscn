@@ -58,7 +58,7 @@ radius = 30.0167
 [sub_resource type="CircleShape2D" id="CircleShape2D_vmya7"]
 radius = 7.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 32
 collision_mask = 192
 motion_mode = 1
@@ -108,11 +108,18 @@ collision_mask = 512
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
 shape = SubResource("CircleShape2D_vmya7")
 
+[node name="WeaponParent" type="Node2D" parent="."]
+
 [node name="Timers" type="Node" parent="."]
 
 [node name="WeaponTimers" type="Node" parent="Timers"]
 
 [node name="SwordTimer" type="Timer" parent="Timers/WeaponTimers"]
+wait_time = 2.0
+
+[node name="RegenTimer" type="Timer" parent="Timers"]
+wait_time = 5.0
+autostart = true
 
 [node name="HUD" parent="." instance=ExtResource("4_a3d5b")]
 
@@ -121,5 +128,7 @@ shape = SubResource("CircleShape2D_vmya7")
 [connection signal="body_exited" from="VisionArea" to="." method="_on_vision_area_body_exited"]
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
+[connection signal="timeout" from="Timers/WeaponTimers/SwordTimer" to="." method="_on_sword_timer_timeout"]
+[connection signal="timeout" from="Timers/RegenTimer" to="." method="_on_regen_timer_timeout"]
 
 [editable path="HurtBox"]
