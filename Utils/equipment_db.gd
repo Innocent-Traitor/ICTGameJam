@@ -1,8 +1,8 @@
+extends Node
 const WEAPON_PATH = "res://Sprites/Items/Weapons/"
 const ICON_PATH = "res://Sprites/Items/Upgrades/"
 const ABILITY_PATH = "res://Sprites/Items/Abilities/"
 const UPGRADES = {
-		# Sword
 	"sword1": {
 		"icon": WEAPON_PATH + "sword.png",
 		"displayname": "Sword\n",
@@ -31,35 +31,35 @@ const UPGRADES = {
 		"prerequisite": ["sword3"],
 		"type": "weapon"
 	},
-		# Bow
-	# "bow1": {
-	# 	"icon": WEAPON_PATH + "bow.png",
-	# 	"displayname": "Bow",
-	# 	"details": "Randomly shoot an arrow at an enemy",
-	# 	"prerequisite": [],
-	# 	"type": "weapon"
-	# },
-	# "bow2": {
-	# 	"icon": WEAPON_PATH + "bow.png",
-	# 	"displayname": "Bow",
-	# 	"details": "Shot another arrow and do an extra 2 damage",
-	# 	"prerequisite": ["bow1"],
-	# 	"type": "weapon"
-	# },
-	# "bow3": {
-	# 	"icon": WEAPON_PATH + "bow.png",
-	# 	"displayname": "Bow",
-	# 	"details": "Shoot 2 more arrows",
-	# 	"prerequisite": ["bow2"],
-	# 	"type": "weapon"
-	# },
-	# "bow4": {
-	# 	"icon": WEAPON_PATH + "bow.png",
-	# 	"details": "Shot 1 more arrow and do an extra 3 damage",
-	# 	"level": "Level: 4",
-	# 	"prerequisite": ["bow3"],
-	# 	"type": "weapon"
-	# },
+	"bow1": {
+		"icon": WEAPON_PATH + "bow.png",
+		"displayname": "Bow",
+		"details": "Randomly shoot an arrow at an enemy",
+		"prerequisite": [],
+		"type": "weapon"
+	},
+	"bow2": {
+		"icon": WEAPON_PATH + "bow.png",
+		"displayname": "Bow",
+		"details": "Shot another arrow and do an extra 2 damage",
+		"prerequisite": ["bow1"],
+		"type": "weapon"
+	},
+	"bow3": {
+		"icon": WEAPON_PATH + "bow.png",
+		"displayname": "Bow",
+		"details": "Shoot 2 more arrows",
+		"prerequisite": ["bow2"],
+		"type": "weapon"
+	},
+	"bow4": {
+		"icon": WEAPON_PATH + "bow.png",
+		"details": "Shot 1 more arrow and do an extra 3 damage",
+		"level": "Level: 4",
+		"prerequisite": ["bow3"],
+		"type": "weapon"
+	},
+	#region Items
 	"food": {
 		"icon": ICON_PATH + "food.png",
 		"displayname": "Food\n",
@@ -172,6 +172,7 @@ const UPGRADES = {
 		"prerequisite": ['anvil2'],
 		"type": "item"
 	},
+	#endregion
 	
 
 

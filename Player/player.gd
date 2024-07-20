@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var sword_attack = preload("res://Player/Attacks/sword_attack.tscn")
+var arrow_attack = preload("res://Player/Attacks/arrow.tscn")
 
 
 @onready var sprite = $AnimatedSprite2D
@@ -8,6 +9,7 @@ var sword_attack = preload("res://Player/Attacks/sword_attack.tscn")
 @onready var weapon_parent = $WeaponParent
 
 @onready var sword_timer = $Timers/WeaponTimers/SwordTimer
+@onready var bow_timer = $Timers/WeaponTimers/ArrowTimer
 
 var non_decay_max_health : int = 100
 var non_decay_health : float = non_decay_max_health
@@ -41,14 +43,18 @@ signal death()
 func _ready() -> void:
 	hud.update_health(health, max_health)
 	hud.update_expbar(experience, calculate_experiencecap())
-	upgrade_character('sword1')
+	upgrade_character('bow1')
+	upgrade_character('bow4')
 
 func start_attack() -> void:
 	if collected_upgrades.has("sword1"):
 		sword_timer.stop()
 		sword_timer.wait_time = 2
 		sword_timer.start()
-
+	if collected_upgrades.has("bow1"):
+		bow_timer.stop()
+		bow_timer.wait_time = 1
+		bow_timer.start()
 func _process(_delta: float) -> void:
 	handle_movement()
 
@@ -83,6 +89,14 @@ func upgrade_character(upgrade): # Called in item_option
 			sword_level = 3
 		'sword4':
 			sword_level = 4
+		'bow1':
+			bow_level = 1
+		'bow2':
+			bow_level = 2
+		'bow3':
+			bow_level = 3
+		'bow4':
+			bow_level = 4
 		#region Upgrade Items
 		'food':
 			health += 25
@@ -232,6 +246,23 @@ func _on_sword_timer_timeout() -> void:
 	var sword = sword_attack.instantiate()
 	sword.level = sword_level
 	weapon_parent.add_child(sword)
+
+
+func _on_arrow_timer_timeout() -> void:
+	var ammo = bow_level
+	if bow_level >= 3:
+		ammo += 1
+	
+	for i in range(ammo):
+		var arrow = arrow_attack.instantiate()
+		arrow.level = bow_level
+		arrow.target = get_random_target()
+		arrow.position = self.global_position
+		get_tree().current_scene.add_child(arrow)
+		await get_tree().create_timer(0.1).timeout
+	
+	bow_timer.wait_time = 1
+	bow_timer.start()
 
 
 #endregion

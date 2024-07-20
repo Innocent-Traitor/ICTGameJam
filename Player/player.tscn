@@ -88,8 +88,8 @@ drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 
 [node name="VisionArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 8
+collision_layer = 32768
+collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea"]
 shape = SubResource("CircleShape2D_xocda")
@@ -117,6 +117,8 @@ shape = SubResource("CircleShape2D_vmya7")
 [node name="SwordTimer" type="Timer" parent="Timers/WeaponTimers"]
 wait_time = 2.0
 
+[node name="ArrowTimer" type="Timer" parent="Timers/WeaponTimers"]
+
 [node name="RegenTimer" type="Timer" parent="Timers"]
 wait_time = 5.0
 autostart = true
@@ -129,6 +131,7 @@ autostart = true
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
 [connection signal="timeout" from="Timers/WeaponTimers/SwordTimer" to="." method="_on_sword_timer_timeout"]
+[connection signal="timeout" from="Timers/WeaponTimers/ArrowTimer" to="." method="_on_arrow_timer_timeout"]
 [connection signal="timeout" from="Timers/RegenTimer" to="." method="_on_regen_timer_timeout"]
 
 [editable path="HurtBox"]

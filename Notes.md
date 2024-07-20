@@ -10,7 +10,6 @@ Last Chance - Passive - If the player is about to do, they get bullet time and i
 
 
 Weapons -
-Bow - Will randomly shoot towards enemies, each upgrade increases arrows and damage
 Crossbow - Aimed projectile that will pierce, each upgrade does more pierce and damage
 Fire Staff - Will bring down DoT entities that will stay on the field for a few seconds and deal damage, each upgrade will increase amount and length
 Barrel of Sludge - Will spill sludge slowing down enemies and doing DoT, each upgrade will improve AoE size and damage

@@ -6,6 +6,8 @@
 [node name="EnemyBase" type="Node2D"]
 
 [node name="HurtBox" parent="." instance=ExtResource("3_mi336")]
+collision_layer = 8
+collision_mask = 2
 
 [node name="DisableTimer" parent="HurtBox" index="1"]
 one_shot = true
