@@ -70,21 +70,21 @@ const UPGRADES = {
 	"boots1": {
 		"icon": ICON_PATH + "boots.png",
 		"displayname": "Go Fasters\n",
-		"details": "Go 10%% faster",
+		"details": "Go 10% faster",
 		"prerequisite": [],
 		"type": "item"
 	},
 	"boots2": {
 		"icon": ICON_PATH + "boots.png",
 		"displayname": "Go Fasters+1\n",
-		"details": "Go 20%% faster",
+		"details": "Go 20% faster",
 		"prerequisite": ['boots1'],
 		"type": "item"
 	},
 	"boots3": {
 		"icon": ICON_PATH + "boots.png",
 		"displayname": "Go Fasters+2\n",
-		"details": "Go 30%% faster",
+		"details": "Go 30% faster",
 		"prerequisite": ['boots2'],
 		"type": "item"
 	},
@@ -133,42 +133,42 @@ const UPGRADES = {
 	"whetstone1": {
 		"icon": ICON_PATH + "whetstone.png",
 		"displayname": "Whetstone\n",
-		"details": "Increase damage by 10%%",
+		"details": "Increase damage by 10%",
 		"prerequisite": [],
 		"type": "item"
 	},
 	"whetstone2": {
 		"icon": ICON_PATH + "whetstone.png",
 		"displayname": "Whetstone+1\n",
-		"details": "Increase damage by 20%%",
+		"details": "Increase damage by 20%",
 		"prerequisite": ['whetstone1'],
 		"type": "item"
 	},
 	"whetstone3": {
 		"icon": ICON_PATH + "whetstone.png",
 		"displayname": "Whetstone+2\n",
-		"details": "Increase damage by 30%%",
+		"details": "Increase damage by 30%",
 		"prerequisite": ['whetstone2'],
 		"type": "item"
 	},
 	"anvil1": {
 		"icon": ICON_PATH + "anvil.png",
 		"displayname": "Anvil\n",
-		"details": "Deflect 5%% of damage",
+		"details": "Deflect 5% of damage",
 		"prerequisite": [],
 		"type": "item"
 	},
 	"anvil2": {
 		"icon": ICON_PATH + "anvil.png",
 		"displayname": "Anvil+1\n",
-		"details": "Deflect 10%% of damage",
+		"details": "Deflect 10% of damage",
 		"prerequisite": ['anvil1'],
 		"type": "item"
 	},
 	"anvil3": {
 		"icon": ICON_PATH + "anvil.png",
 		"displayname": "Anvil+2\n",
-		"details": "Deflect 15%% of damage",
+		"details": "Deflect 15% of damage",
 		"prerequisite": ['anvil2'],
 		"type": "item"
 	},

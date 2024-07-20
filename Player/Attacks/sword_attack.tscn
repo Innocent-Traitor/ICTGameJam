@@ -360,7 +360,7 @@ _data = {
 "RESET": SubResource("Animation_gdq11")
 }
 
-[node name="SwordAttack" type="Area2D"]
+[node name="SwordAttack" type="Area2D" groups=["attack"]]
 position = Vector2(0, -1)
 collision_layer = 16
 collision_mask = 8

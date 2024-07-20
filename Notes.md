@@ -10,8 +10,7 @@ Last Chance - Passive - If the player is about to do, they get bullet time and i
 
 
 Weapons -
-Sword - A basic slash in front of the player, each upgrade will increase damage and amount of slashes
-Bow - Will randomly shoot towards an enemies in a cone, each upgrade increases arrows and damage
+Bow - Will randomly shoot towards enemies, each upgrade increases arrows and damage
 Crossbow - Aimed projectile that will pierce, each upgrade does more pierce and damage
 Fire Staff - Will bring down DoT entities that will stay on the field for a few seconds and deal damage, each upgrade will increase amount and length
 Barrel of Sludge - Will spill sludge slowing down enemies and doing DoT, each upgrade will improve AoE size and damage
@@ -29,7 +28,6 @@ Banshee - 1st Boss, will scream causing the player to slow down,
 Vampire - Transforms between a bit bat and the player during the fight
 Necromancer - BBEG, will summon skeletons and zombies out of the ground, summon the banshee to do the scream or the vampire to swoop in as a bat
 
-Fix pick random item
 Weapons and Enemies <- Big Bulk
 Stat Decay <-- Easy, take less than 30 minutes
 Death/Respawn <-- Reuse as much as the level up as we can

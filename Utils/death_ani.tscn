@@ -4,6 +4,7 @@
 
 [node name="DeathAni" type="CPUParticles2D"]
 modulate = Color(0.533333, 0.533333, 0.533333, 1)
+scale = Vector2(2, 2)
 emitting = false
 amount = 15
 lifetime = 0.5

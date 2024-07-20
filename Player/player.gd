@@ -11,7 +11,7 @@ var sword_attack = preload("res://Player/Attacks/sword_attack.tscn")
 
 var non_decay_max_health : int = 100
 var non_decay_health : float = non_decay_max_health
-var non_decay_health_regen : float = 2.5
+var non_decay_health_regen : float = 0
 var non_decay_attack : float = 1.0
 var non_decay_defense : float = 0.0
 var non_decay_speed_mult : float = 1.0
@@ -83,6 +83,7 @@ func upgrade_character(upgrade): # Called in item_option
 			sword_level = 3
 		'sword4':
 			sword_level = 4
+		#region Upgrade Items
 		'food':
 			health += 25
 			if health > max_health:
@@ -142,6 +143,7 @@ func upgrade_character(upgrade): # Called in item_option
 		'anvil3':
 			non_decay_defense = 0.15
 			defense += 0.05
+		#endregion
 
 
 			

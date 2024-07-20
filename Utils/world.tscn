@@ -161,7 +161,7 @@ shape = SubResource("RectangleShape2D_cjnyb")
 unique_name_in_owner = true
 position = Vector2(170, 209)
 
-[node name="LootParent" type="Node2D" parent="."]
+[node name="LootParent" type="Node2D" parent="." groups=["loot"]]
 
 [node name="Loot" parent="LootParent" instance=ExtResource("5_jqyuu")]
 position = Vector2(314, 206)

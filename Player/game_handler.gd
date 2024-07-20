@@ -17,7 +17,6 @@ func _on_undead_refill_timer_timeout() -> void:
 func update_health(hp:float, max_hp:int) -> void:
 	health.max_value = max_hp
 	health.value = hp
-	print(hp)
 
 ## Updates exp and maxexp
 func update_expbar(xp:int, max_xp:int) -> void:
