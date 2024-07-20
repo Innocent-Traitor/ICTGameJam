@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1ctqpg3q863k"]
+
+[ext_resource type="Script" path="res://Utils/hit_box.gd" id="1_11crl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bexky"]
+radius = 8.0
+
+[node name="HitBox" type="Area2D"]
+script = ExtResource("1_11crl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bexky")
+debug_color = Color(0.870588, 0.0588235, 0, 0.419608)
+
+[node name="DisableHitBoxTimer" type="Timer" parent="."]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgrpa0xq1e02m"
-path="res://.godot/imported/radial_fill.png-48b3c12e361b6aeac81902bdba896957.ctex"
+uid="uid://pklywb2uboqr"
+path="res://.godot/imported/Loot2.png-dbcd88aa2e6add87447463c4e40ca016.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/radial_fill.png"
-dest_files=["res://.godot/imported/radial_fill.png-48b3c12e361b6aeac81902bdba896957.ctex"]
+source_file="res://Sprites/Loot/Loot2.png"
+dest_files=["res://.godot/imported/Loot2.png-dbcd88aa2e6add87447463c4e40ca016.ctex"]
 
 [params]
 

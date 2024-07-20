@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1pkc6tnk7gih"]
+
+[ext_resource type="Script" path="res://Enemy/enemy_base.gd" id="1_viqk6"]
+[ext_resource type="Texture2D" uid="uid://bdqw4h3x4ibby" path="res://Sprites/Enemy/skeleton-sheet.png" id="2_qybki"]
+[ext_resource type="PackedScene" uid="uid://cucjbsudtpmw" path="res://Utils/hurt_box.tscn" id="3_mi336"]
+[ext_resource type="PackedScene" uid="uid://d1ctqpg3q863k" path="res://Utils/hit_box.tscn" id="4_3mu22"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vk1c"]
+atlas = ExtResource("2_qybki")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5bib"]
+atlas = ExtResource("2_qybki")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lg17s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vk1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5bib")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrf80"]
+radius = 6.0
+
+[node name="EnemyBase" type="CharacterBody2D"]
+script = ExtResource("1_viqk6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lg17s")
+frame_progress = 0.671315
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xrf80")
+debug_color = Color(0, 0.129412, 0.156863, 0.419608)
+
+[node name="HurtBox" parent="." instance=ExtResource("3_mi336")]
+
+[node name="DisableTimer" parent="HurtBox" index="1"]
+one_shot = true
+
+[node name="HitBox" parent="." instance=ExtResource("4_3mu22")]
+
+[node name="DisableHitBoxTimer" parent="HitBox" index="1"]
+wait_time = 0.5
+one_shot = true
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

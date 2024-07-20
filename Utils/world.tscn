@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dh0jbt1pxwa5s"]
 
 [ext_resource type="TileSet" uid="uid://bfuojah8jmtsx" path="res://Resources/TileSet.tres" id="1_puphl"]
-[ext_resource type="Script" path="res://world_map.gd" id="1_pwefr"]
-[ext_resource type="PackedScene" uid="uid://d0dyx7saustq0" path="res://player.tscn" id="2_fldn5"]
-[ext_resource type="Script" path="res://tile.gd" id="3_xnvnk"]
-[ext_resource type="PackedScene" uid="uid://doeb8sn37xnft" path="res://hud.tscn" id="5_235yj"]
+[ext_resource type="Script" path="res://Utils/world_map.gd" id="1_pwefr"]
+[ext_resource type="PackedScene" uid="uid://d0dyx7saustq0" path="res://Player/player.tscn" id="2_fldn5"]
+[ext_resource type="Script" path="res://Objects/tile.gd" id="3_xnvnk"]
+[ext_resource type="PackedScene" uid="uid://d3s3g32x4dm0t" path="res://Objects/loot.tscn" id="5_jqyuu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjnyb"]
 size = Vector2(1012, 80)
@@ -147,9 +147,13 @@ position = Vector2(168, 504)
 shape = SubResource("RectangleShape2D_cjnyb")
 
 [node name="Player" parent="." instance=ExtResource("2_fldn5")]
+unique_name_in_owner = true
 position = Vector2(170, 209)
 
-[node name="HUD" parent="." instance=ExtResource("5_235yj")]
+[node name="LootParent" type="Node2D" parent="."]
+
+[node name="Loot" parent="LootParent" instance=ExtResource("5_jqyuu")]
+position = Vector2(314, 206)
 
 [connection signal="body_entered" from="WorldMap/TopMonitor" to="WorldMap" method="_on_top_monitor_body_entered"]
 [connection signal="body_entered" from="WorldMap/LeftMonitor" to="WorldMap" method="_on_left_monitor_body_entered"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ICTGameJam"
-run/main_scene="res://world.tscn"
+run/main_scene="res://Utils/world.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -25,6 +25,10 @@ window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/scale=1.75
 window/stretch/scale_mode="integer"
+
+[gui]
+
+theme/custom="res://Resources/main_theme.tres"
 
 [input]
 

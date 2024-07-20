@@ -1,6 +1,6 @@
+const WEAPON_PATH = "res://Sprites/Items/Weapons/"
 const ICON_PATH = "res://Sprites/Items/Upgrades/"
-const WEAPON_PATH = "res://Textures/Items/Weapons/"
-const ABILITY_PATH = "res://Textures/Items/Abilities/"
+const ABILITY_PATH = "res://Sprites/Items/Abilities/"
 const UPGRADES = {
 		# Sword
 	"sword1": {
@@ -13,7 +13,7 @@ const UPGRADES = {
 	},
 	"sword2": {
 		"icon": WEAPON_PATH + "sword.png",
-		"displayname": "Sword",
+		"displayname": "Sword+1",
 		"details": "Deal an extra 3 damage",
 		"level": "Level: 2",
 		"prerequisite": ["sword1"],
@@ -21,7 +21,7 @@ const UPGRADES = {
 	},
 	"sword3": {
 		"icon": WEAPON_PATH + "sword.png",
-		"displayname": "Sword",
+		"displayname": "Sword+2",
 		"details": "Slash the sword a second time",
 		"level": "Level: 3",
 		"prerequisite": ["sword2"],
@@ -29,7 +29,7 @@ const UPGRADES = {
 	},
 	"sword4": {
 		"icon": WEAPON_PATH + "sword.png",
-		"displayname": "Sword",
+		"displayname": "Sword+3",
 		"details": "Slash 3 times total and deal 5 extra damage",
 		"level": "Level: 4",
 		"prerequisite": ["sword3"],

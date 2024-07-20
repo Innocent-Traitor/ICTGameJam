@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cedowew0qbn2o"
-path="res://.godot/imported/ability_box.png-874472c51028da60c62d211d6f8cf463.ctex"
+uid="uid://dsa1nrxnnh3nl"
+path="res://.godot/imported/player-tilesheet.png-895666f51aba5ba419f47c59649896f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ability_box.png"
-dest_files=["res://.godot/imported/ability_box.png-874472c51028da60c62d211d6f8cf463.ctex"]
+source_file="res://Sprites/Player/player-tilesheet.png"
+dest_files=["res://.godot/imported/player-tilesheet.png-895666f51aba5ba419f47c59649896f2.ctex"]
 
 [params]
 

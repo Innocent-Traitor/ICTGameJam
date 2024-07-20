@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o7hi3mfs1fvw"
-path="res://.godot/imported/tile_0060.png-b37de159527c735a4efab71ec24ff1f3.ctex"
+uid="uid://cedowew0qbn2o"
+path="res://.godot/imported/ability_box.png-575d3e3d9e18f486890bbfa0d5b10dbc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/tile_0060.png"
-dest_files=["res://.godot/imported/tile_0060.png-b37de159527c735a4efab71ec24ff1f3.ctex"]
+source_file="res://Sprites/GUI/ability_box.png"
+dest_files=["res://.godot/imported/ability_box.png-575d3e3d9e18f486890bbfa0d5b10dbc.ctex"]
 
 [params]
 
