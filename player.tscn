@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=3 uid="uid://d0dyx7saustq0"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_5xl5s"]
+[ext_resource type="Texture2D" uid="uid://dsa1nrxnnh3nl" path="res://Sprites/player-tilesheet.png" id="2_kdvnm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jghji"]
+atlas = ExtResource("2_kdvnm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mbgn"]
+atlas = ExtResource("2_kdvnm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wvrt"]
+atlas = ExtResource("2_kdvnm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1cn5"]
+atlas = ExtResource("2_kdvnm")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8wf3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jghji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mbgn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wvrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1cn5")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yd70b"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p5m8w"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nna42"]
+radius = 9.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 192
+motion_mode = 1
+script = ExtResource("1_5xl5s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_8wf3d")
+animation = &"move"
+frame_progress = 0.126847
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yd70b")
+debug_color = Color(0, 0, 0, 0.419608)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_p5m8w")
+debug_color = Color(0.752941, 0.172549, 0, 0.419608)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_nna42")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
