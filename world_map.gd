@@ -77,7 +77,6 @@ func _on_left_monitor_body_entered(_body: Node2D) -> void:
 func _on_right_monitor_body_entered(_body: Node2D) -> void:
 	handle_world_wrap("right")
 
-
 func _on_bottom_monitor_body_entered(_body: Node2D) -> void:
 	handle_world_wrap("bottom")
 #endregion

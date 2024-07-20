@@ -2,16 +2,23 @@ extends CharacterBody2D
 
 @onready var sprite = $AnimatedSprite2D
 
-var speed = 150
+var max_health : int = 100
+var health : int = max_health
+var health_regen : float = 2.5
+var attack : float = 1.0
+var defense : float = 0.0
+var speed_mult : float = 1.0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var level = 1
+var speed = 400
+
+signal health_changed(new_value)
+signal death()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	handle_movement()
-
 
 func handle_movement() -> void:
 	var mov = Input.get_vector("left", "right", "up", "down")
