@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://0whnvxusnrcb"]
+[gd_scene load_steps=14 format=3 uid="uid://0whnvxusnrcb"]
 
 [ext_resource type="Script" path="res://Player/game_handler.gd" id="1_l7oeo"]
 [ext_resource type="Texture2D" uid="uid://b16q7kqq86ywc" path="res://Sprites/GUI/item_box.png" id="2_f3oh7"]
 [ext_resource type="Texture2D" uid="uid://cedowew0qbn2o" path="res://Sprites/GUI/ability_box.png" id="4_mujsc"]
+[ext_resource type="Script" path="res://Player/cooldown_timer.gd" id="5_dr18i"]
 [ext_resource type="Texture2D" uid="uid://cgrpa0xq1e02m" path="res://Sprites/GUI/radial_fill.png" id="5_w6rtu"]
 [ext_resource type="Texture2D" uid="uid://d2s6gmat54vcl" path="res://Sprites/Items/Weapons/sword.png" id="7_m2irn"]
 [ext_resource type="Script" path="res://Player/level_up_panel.gd" id="7_xs7iq"]
@@ -125,7 +126,7 @@ theme_override_constants/separation = 1
 
 [node name="ActiveAbilitySprite" type="TextureRect" parent="AbilityContainer"]
 unique_name_in_owner = true
-modulate = Color(0.662745, 0.662745, 0.662745, 0.329412)
+modulate = Color(0.662745, 0.662745, 0.662745, 1)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
@@ -152,28 +153,43 @@ offset_bottom = 32.6
 theme_override_constants/separation = 1
 
 [node name="ActiveAbilityProgress" type="TextureProgressBar" parent="AbilityCooldownContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 max_value = 50.0
 fill_mode = 4
 texture_progress = ExtResource("5_w6rtu")
 tint_progress = Color(0.752941, 0.752941, 0.752941, 0.823529)
+script = ExtResource("5_dr18i")
+
+[node name="Timer" type="Timer" parent="AbilityCooldownContainer/ActiveAbilityProgress"]
+one_shot = true
 
 [node name="SecondaryAbilityProgress" type="TextureProgressBar" parent="AbilityCooldownContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 max_value = 50.0
 fill_mode = 4
 texture_progress = ExtResource("5_w6rtu")
 tint_progress = Color(0.752941, 0.752941, 0.752941, 0.823529)
+script = ExtResource("5_dr18i")
+
+[node name="Timer" type="Timer" parent="AbilityCooldownContainer/SecondaryAbilityProgress"]
+one_shot = true
 
 [node name="PassiveAbilityProgress" type="TextureProgressBar" parent="AbilityCooldownContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 max_value = 50.0
 fill_mode = 4
 texture_progress = ExtResource("5_w6rtu")
 tint_progress = Color(0.752941, 0.752941, 0.752941, 0.823529)
+script = ExtResource("5_dr18i")
+
+[node name="Timer" type="Timer" parent="AbilityCooldownContainer/PassiveAbilityProgress"]
+one_shot = true
 
 [node name="BarContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(100, 20)
@@ -523,6 +539,9 @@ text = "00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="timeout" from="AbilityCooldownContainer/ActiveAbilityProgress/Timer" to="AbilityCooldownContainer/ActiveAbilityProgress" method="_on_timer_timeout"]
+[connection signal="timeout" from="AbilityCooldownContainer/SecondaryAbilityProgress/Timer" to="AbilityCooldownContainer/SecondaryAbilityProgress" method="_on_timer_timeout"]
+[connection signal="timeout" from="AbilityCooldownContainer/PassiveAbilityProgress/Timer" to="AbilityCooldownContainer/PassiveAbilityProgress" method="_on_timer_timeout"]
 [connection signal="timeout" from="BarContainer/UndeadBar/UndeadRefillTimer" to="." method="_on_undead_refill_timer_timeout"]
 [connection signal="mouse_entered" from="LevelUpPanel/TextureContainer/Item0" to="LevelUpPanel/TextureContainer/Item0" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="LevelUpPanel/TextureContainer/Item0" to="LevelUpPanel/TextureContainer/Item0" method="_on_mouse_exited"]

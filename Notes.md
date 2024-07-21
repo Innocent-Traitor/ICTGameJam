@@ -1,17 +1,7 @@
-Abilities - Active, Secondary, Passive - Desc - Upgraded
-AOE Freeze - Active - will freeze the enemies around the player to prevent advance - Increase duration and damage
-Rush - Active - 2x speed, 90% defense, and deal damage to enemies you run into for 10 seconds - Nullify damage during this, and do increased damage
+ITEMS ARE DONE YAYAYAAYAYA - Sat @ 1030
+WEAPONS ARE DONE FUCK YOU FUCK YOU FUCK YOU - Sat @ 2300
+Abiliites are done as well 🤠🤠🤠🤠🤠🤠🤠🤠 - Sun @ 0440
 
-Dodge - Secondary - to do a cooldown dodge (invincibility frames) - 2 Charges
-Wind Blast - Secondary - Push all enemies away from the player - Do a second one towards the mouse position with a farther distance
-
-Last Chance - Passive - If the player is about to do, they get bullet time and invincibility to undo their situation (Game moves at .5 speed, player moves at .75 speed)  - Player and weapons go at full speed 
-Holy Potion - Passive - Decay takes longer to happen - Decay can only go to 25%
-
-
-
-WEAPONS ARE DONE FUCK YOU FUCK YOU FUCK YOU
-ITEMS ARE DONE YAYAYAAYAYA
 
 Enemies - 
 Revenant - Upgraded Skeleton
@@ -24,7 +14,6 @@ Banshee - 1st Boss, will scream causing the player to slow down,
 Vampire - Transforms between a bit bat and the player during the fight
 Necromancer - BBEG, will summon skeletons and zombies out of the ground, summon the banshee to do the scream or the vampire to swoop in as a bat
 
-Abilities <- FUCK YOU
-Death/Respawn <-- Reuse as much as the level up as we can
+
+Enemy Grind
 Menu <- Sunday only
-GameOver <- Sunday Only

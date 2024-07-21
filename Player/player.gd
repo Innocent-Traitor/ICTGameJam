@@ -39,8 +39,11 @@ var fire_level = 0
 var sludge_level = 0
 
 var active_ability = null
+var active_cooldown = false
 var secondary_ability = null
+var secondary_cooldown = false
 var passive_ability = null
+var passive_cooldown = false
 
 var level = 1
 var experience = 0
@@ -54,7 +57,6 @@ func _ready() -> void:
 	hud.update_health(health, max_health)
 	hud.update_expbar(experience, calculate_experiencecap())
 	upgrade_character('sword1')
-	gain_ability('freezeblast2')
 
 ## Restart the attack timers
 func start_attack() -> void:
@@ -97,7 +99,7 @@ func handle_movement() -> void:
 	else:
 		sprite.play("idle")
 
-	velocity = mov.normalized() * speed
+	velocity = mov.normalized() * speed * speed_mult
 	move_and_slide()
 
 func level_up():
@@ -219,7 +221,7 @@ func upgrade_character(upgrade): # Called in item_option
 
 func gain_ability(ability) -> void:
 	max_health = non_decay_max_health
-	health  = non_decay_health / 2
+	#health  = non_decay_health / 2
 	hud.update_health(health, max_health)
 	health_regen = non_decay_health_regen
 	attack = non_decay_attack
@@ -241,6 +243,27 @@ func gain_ability(ability) -> void:
 	get_tree().paused = false
 
 func handle_death() -> void:
+	if (passive_ability == "lastchance1" or passive_ability == "lastchance2") and passive_cooldown == false:
+		passive_cooldown = true
+		hud.set_ability_cooldown("Passive", 180)
+		var mult
+		if passive_ability == "lastchance2":
+			mult = 1
+		else:
+			mult = 0.5
+		speed_mult += mult
+		$HurtBox.monitorable = false
+		$HurtBox.monitoring = false
+		health = 5
+		hud.update_health(health, max_health)
+		Engine.time_scale = 0.3	
+		await get_tree().create_timer(2.5).timeout
+		Engine.time_scale = 1
+		speed_mult -= mult
+		$HurtBox.monitorable = true
+		$HurtBox.monitoring = true
+		return
+
 	if hud.can_respawn():
 		hud.start_respawn()
 	else:
@@ -256,8 +279,12 @@ func get_random_target():
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed('active'):
+		if active_cooldown == true:
+			return
 		match active_ability:
 			'freezeblast1':
+				hud.set_ability_cooldown("Active", 150)
+				active_cooldown = true
 				var enemies = get_tree().get_first_node_in_group('enemyspawn').get_children()
 				var frozen_enemies = []
 				for enemy in enemies:
@@ -273,6 +300,8 @@ func _unhandled_key_input(event):
 						enemy.speed = enemy.movement_speed
 			
 			'freezeblast2':
+				hud.set_ability_cooldown("Active", 150)
+				active_cooldown = true
 				var enemies = get_tree().get_first_node_in_group('enemyspawn').get_children()
 				var frozen_enemies = []
 				for enemy in enemies:
@@ -287,8 +316,87 @@ func _unhandled_key_input(event):
 						enemy.modulate = Color(1, 1, 1, 1)
 						enemy.speed = enemy.movement_speed
 						enemy._on_hurt_box_hurt(5, Vector2.ZERO, 0)
+
+			'rush1':
+				hud.set_ability_cooldown("Active", 90)
+				active_cooldown = true
+				var non_spd = non_decay_speed_mult
+				var spd = speed_mult
+				var non_def = non_decay_defense
+				var def = defense
+				non_decay_speed_mult *= 2
+				speed_mult *= 2
+				non_decay_defense = 0.5
+				defense = 0.5
+				await get_tree().create_timer(5).timeout
+				non_decay_speed_mult = non_spd
+				speed_mult = spd
+				non_decay_defense = non_def
+				defense = def
+				
+			'rush2':
+				hud.set_ability_cooldown("Active", 90)
+				active_cooldown = true
+				var non_spd = non_decay_speed_mult
+				var spd = speed_mult
+				var non_def = non_decay_defense
+				var def = defense
+				non_decay_speed_mult *= 2
+				speed_mult *= 2
+				non_decay_defense = 1
+				defense = 1
+				await get_tree().create_timer(10).timeout
+				non_decay_speed_mult = non_spd
+				speed_mult = spd
+				non_decay_defense = non_def
+				defense = def
 						
-		
+	if event.is_action_pressed('secondary'):
+		if secondary_cooldown == true:
+			return
+		match secondary_ability:
+			'dodge1':
+				hud.set_ability_cooldown("Secondary", 15)
+				secondary_cooldown = true
+				speed_mult += 1.5
+				$HurtBox.monitorable = false
+				$HurtBox.monitoring = false
+				$CollisionShape2D.disabled = true
+				await get_tree().create_timer(0.25).timeout
+				speed_mult -= 1.5
+				$HurtBox.monitorable = true
+				$HurtBox.monitoring = true
+				$CollisionShape2D.disabled = false
+
+			'dodge2':
+				hud.set_ability_cooldown("Secondary", 5)
+				secondary_cooldown = true
+				non_decay_speed_mult += 1.5
+				$HurtBox.monitorable = false
+				$HurtBox.monitoring = false
+				$CollisionShape2D.disabled = true
+				await get_tree().create_timer(0.25).timeout
+				non_decay_speed_mult -= 1.5
+				$HurtBox.monitorable = true
+				$HurtBox.monitoring = true
+				$CollisionShape2D.disabled = false
+
+			'windblast1':
+				hud.set_ability_cooldown("Secondary", 3)
+				secondary_cooldown = true
+				var enemies = get_tree().get_first_node_in_group('enemyspawn').get_children()
+				for enemy in enemies:
+					if enemy is CharacterBody2D:
+						enemy._on_hurt_box_hurt(0,  -enemy.global_position.direction_to(global_position), 200)
+			
+			'windblast2':
+				hud.set_ability_cooldown("Secondary", 60)
+				secondary_cooldown = true
+				var enemies = get_tree().get_first_node_in_group('enemyspawn').get_children()
+				for enemy in enemies:
+					if enemy is CharacterBody2D:
+						enemy._on_hurt_box_hurt(3,  -enemy.global_position.direction_to(global_position), 250)
+
 
 #region Experience
 ## Calculate the experience we just got and see if we level up
@@ -334,7 +442,7 @@ func _on_grab_area_area_entered(area:Area2D) -> void:
 		
 ## Handle player damage
 func _on_hurt_box_hurt(damage:Variant, _angle:Variant, _knockback:Variant) -> void:
-	health -= clampf(damage - (damage * defense), 1, 999)
+	health -= clampf(damage + (damage * -defense), 0, 999)
 	hud.update_health(health, max_health)
 	if health <= 0:
 		handle_death()
@@ -352,8 +460,18 @@ func _on_regen_timer_timeout() -> void:
 	hud.update_health(health, max_health)
 
 func _on_decay_timer_timeout():
-	if decay_percentage >= 0.5:
-		decay_percentage -= 0.0025
+	var max_decay
+	var decay_rate
+	if passive_ability == "holy1" or passive_ability == "holy2":
+		decay_rate = 0.0025
+	else:
+		decay_rate = 0.000175
+	if passive_ability == "holy2":
+		max_decay = 0.25
+	else:
+		max_decay = 0.5
+	if decay_percentage >= max_decay:
+		decay_percentage -= decay_rate
 		print(decay_percentage)
 		max_health = non_decay_max_health * decay_percentage
 		health = health * decay_percentage

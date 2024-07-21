@@ -86,7 +86,28 @@ func update_ability_gui(ability, type) -> void:
 			%PassiveAbilitySprite.texture = load(EquipmentDB.ABILITY[ability]["icon"])
 
 func set_ability_cooldown(type, cooldown) -> void:
-	pass
+	match type:
+		"Active":
+			%ActiveAbilitySprite.modulate = Color(1, 1, 1, 0.5)
+			%ActiveAbilityProgress.start_cooldown(cooldown)
+			await get_tree().create_timer(cooldown).timeout
+			%ActiveAbilitySprite.modulate = Color(1, 1, 1, 1)
+			get_parent().active_cooldown = false
+		"Secondary":
+			%SecondaryAbilitySprite.modulate = Color(1, 1, 1, 0.5)
+			%SecondaryAbilityProgress.start_cooldown(cooldown)
+			await get_tree().create_timer(cooldown).timeout
+			%SecondaryAbilitySprite.modulate = Color(1, 1, 1, 1)
+			get_parent().secondary_cooldown = false
+		"Passive":
+			%PassiveAbilitySprite.modulate = Color(1, 1, 1, 0.5)
+			%PassiveAbilityProgress.start_cooldown(cooldown)
+			await get_tree().create_timer(cooldown).timeout
+			%PassiveAbilitySprite.modulate = Color(1, 1, 1, 1)
+			get_parent().passive_cooldown = false
+		_:
+			pass
+
 
 func game_over() -> void:
 	get_tree().paused = true

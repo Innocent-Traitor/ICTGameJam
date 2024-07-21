@@ -298,7 +298,7 @@ const ABILITY = {
 	"dodge2": {
 		"icon": ABILITY_PATH + "dodge.png",
 		"displayname": "Roll+\n",
-		"details": "Secondary: You can dodge twice before the cooldown ends",
+		"details": "Secondary: Cooldown is reduced to 5 seconds",
 		"prerequisite": ['dodge1'],
 		"type": "Secondary"
 	},
@@ -312,21 +312,21 @@ const ABILITY = {
 	"windblast2": {
 		"icon": ABILITY_PATH + "windblast.png",
 		"displayname": "Wind Blast+\n",
-		"details": "Secondary: Push enemies you are facing farther away",
+		"details": "Secondary: Enemies also take a small amount of damage",
 		"prerequisite": ['windblast1'],
 		"type": "Secondary"
 	},
 	"lastchance1": {
 		"icon": ABILITY_PATH + "lastchance.png",
 		"displayname": "Last Chance\n",
-		"details": "Passive: Before you die, get bullet time for 5 seconds",
+		"details": "Passive: Before you die, get bullet time for 5 seconds with invincibility",
 		"prerequisite": [],
 		"type": "Passive"
 	},
 	"lastchance2": {
 		"icon": ABILITY_PATH + "lastchance.png",
 		"displayname": "Last Chance+\n",
-		"details": "Passive: You and your attacks move at full speed during bullet time",
+		"details": "Passive: You move during full speed during bullet time",
 		"prerequisite": ['lastchance1'],
 		"type": "Passive"
 	},
