@@ -27,8 +27,10 @@ anchor_left = 0.15
 anchor_top = 0.1
 anchor_right = 0.15
 anchor_bottom = 0.1
-offset_right = 156.0
-offset_bottom = 75.0
+offset_left = -35.0
+offset_top = -15.0
+offset_right = 121.0
+offset_bottom = 60.0
 theme_override_font_sizes/font_size = 48
 text = "Undead,
 Comeback!"
@@ -36,10 +38,10 @@ horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 121.0
-offset_top = 130.0
-offset_right = 223.0
-offset_bottom = 186.0
+offset_left = 86.0
+offset_top = 113.0
+offset_right = 188.0
+offset_bottom = 169.0
 text = "Start the
 Game!"
 script = ExtResource("1_f4flk")
@@ -51,8 +53,10 @@ anchor_left = 0.095
 anchor_top = 0.55
 anchor_right = 0.095
 anchor_bottom = 0.55
-offset_right = 246.0
-offset_bottom = 132.0
+offset_left = -41.8
+offset_top = -14.0
+offset_right = 204.2
+offset_bottom = 118.0
 theme_override_font_sizes/font_size = 32
 text = "Controls:
 WASD - Movement
@@ -64,10 +68,10 @@ horizontal_alignment = 1
 [node name="Story" type="Label" parent="."]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
-offset_left = 310.0
-offset_top = 9.0
-offset_right = 610.0
-offset_bottom = 111.0
+offset_left = 322.0
+offset_top = 22.0
+offset_right = 622.0
+offset_bottom = 124.0
 text = "You are warrior tasked with taking down a necromancer. Once you stepped into their realm, you were cursed and the world began to shift. Fight against their armies and take them down! Good Luck, Have Fun. (or whatever warriors say)
 
 Make sure you let the green meter fill up, if you die while it's filled up, you get another chance and a new ability!"
@@ -87,10 +91,10 @@ stretch_mode = 5
 [node name="Label2" type="Label" parent="."]
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 0
-offset_left = 290.0
-offset_top = 181.0
-offset_right = 465.0
-offset_bottom = 298.0
+offset_left = 270.0
+offset_top = 191.0
+offset_right = 445.0
+offset_bottom = 323.0
 text = "Created and Developed by
 James Moffett | Innocent Traitor
 Web: moonsoftstudios.com
@@ -105,10 +109,10 @@ autowrap_mode = 2
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 0
-offset_left = 275.0
-offset_top = 119.0
-offset_right = 471.0
-offset_bottom = 161.0
+offset_left = 240.0
+offset_top = 124.0
+offset_right = 436.0
+offset_bottom = 166.0
 text = "No sound, sorry :(
 I'll make this pretty later if I have time
 (Spoiler Alert: I won't have time)"

@@ -275,7 +275,7 @@ func handle_death() -> void:
 		$HurtBox.monitoring = false
 		hud.start_respawn()
 	else:
-		if is_respawning == false:
+		if is_respawning == true:
 			return
 		speed_mult = 0
 		$GrabArea.monitoring = false
