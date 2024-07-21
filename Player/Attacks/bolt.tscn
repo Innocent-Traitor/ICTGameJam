@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bn8midiaoskk3"]
+[gd_scene load_steps=4 format=3 uid="uid://6tmj6ekoyu1t"]
 
-[ext_resource type="Texture2D" uid="uid://dr8o7646o85v6" path="res://Sprites/Items/Weapons/arrow.png" id="1_kvrmo"]
-[ext_resource type="Script" path="res://Player/Attacks/arrow.gd" id="1_ttpyw"]
+[ext_resource type="Script" path="res://Player/Attacks/bolt.gd" id="1_gpruw"]
+[ext_resource type="Texture2D" uid="uid://cobgf6su7kn7r" path="res://Sprites/Items/Weapons/bolt.png" id="2_tfov1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xolrr"]
 radius = 4.0
@@ -10,11 +10,11 @@ height = 22.0
 [node name="Arrow" type="Area2D" groups=["attack"]]
 collision_layer = 16
 collision_mask = 8
-script = ExtResource("1_ttpyw")
+script = ExtResource("1_gpruw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 0.785398
-texture = ExtResource("1_kvrmo")
+rotation = 1.5708
+texture = ExtResource("2_tfov1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

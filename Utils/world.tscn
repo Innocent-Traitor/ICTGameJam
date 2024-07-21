@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dh0jbt1pxwa5s"]
+[gd_scene load_steps=11 format=3 uid="uid://dh0jbt1pxwa5s"]
 
 [ext_resource type="TileSet" uid="uid://bfuojah8jmtsx" path="res://Resources/TileSet.tres" id="1_puphl"]
 [ext_resource type="Script" path="res://Utils/world_map.gd" id="1_pwefr"]
 [ext_resource type="PackedScene" uid="uid://d0dyx7saustq0" path="res://Player/player.tscn" id="2_fldn5"]
 [ext_resource type="Script" path="res://Objects/tile.gd" id="3_xnvnk"]
-[ext_resource type="PackedScene" uid="uid://d3s3g32x4dm0t" path="res://Objects/loot.tscn" id="5_jqyuu"]
 [ext_resource type="PackedScene" uid="uid://bk2s5kqgvyl5o" path="res://Enemy/skeleton.tscn" id="6_hvrdx"]
 [ext_resource type="PackedScene" uid="uid://cs1bmbdm4sk5y" path="res://Utils/enemy_spawner.tscn" id="7_73sun"]
 [ext_resource type="Script" path="res://Utils/spawn_info.gd" id="8_vuj6s"]
@@ -26,6 +25,7 @@ enemy_spawn_delay = 1
 [node name="World" type="Node"]
 
 [node name="WorldMap" type="Node2D" parent="."]
+z_index = -5
 script = ExtResource("1_pwefr")
 
 [node name="x1y1" type="TileMap" parent="WorldMap"]
@@ -162,21 +162,6 @@ unique_name_in_owner = true
 position = Vector2(170, 209)
 
 [node name="LootParent" type="Node2D" parent="." groups=["loot"]]
-
-[node name="Loot" parent="LootParent" instance=ExtResource("5_jqyuu")]
-position = Vector2(314, 206)
-
-[node name="Loot2" parent="LootParent" instance=ExtResource("5_jqyuu")]
-position = Vector2(295, 172)
-
-[node name="Loot3" parent="LootParent" instance=ExtResource("5_jqyuu")]
-position = Vector2(284, 194)
-
-[node name="Loot4" parent="LootParent" instance=ExtResource("5_jqyuu")]
-position = Vector2(322, 179)
-
-[node name="Loot5" parent="LootParent" instance=ExtResource("5_jqyuu")]
-position = Vector2(292, 213)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("7_73sun")]
 spawns = Array[ExtResource("8_vuj6s")]([SubResource("Resource_v5ilo")])

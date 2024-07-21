@@ -7,7 +7,7 @@ signal remove_from_array(object)
 var level = 1
 var hp = 9999
 var damage = 3
-var knockback_amount = 100
+var knockback_amount = 200
 var animation = "Attack1"
 
 

@@ -119,6 +119,15 @@ wait_time = 2.0
 
 [node name="ArrowTimer" type="Timer" parent="Timers/WeaponTimers"]
 
+[node name="BoltTimer" type="Timer" parent="Timers/WeaponTimers"]
+wait_time = 1.5
+
+[node name="FireTimer" type="Timer" parent="Timers/WeaponTimers"]
+wait_time = 2.5
+
+[node name="SludgeTimer" type="Timer" parent="Timers/WeaponTimers"]
+wait_time = 5.0
+
 [node name="RegenTimer" type="Timer" parent="Timers"]
 wait_time = 5.0
 autostart = true
@@ -132,6 +141,9 @@ autostart = true
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
 [connection signal="timeout" from="Timers/WeaponTimers/SwordTimer" to="." method="_on_sword_timer_timeout"]
 [connection signal="timeout" from="Timers/WeaponTimers/ArrowTimer" to="." method="_on_arrow_timer_timeout"]
+[connection signal="timeout" from="Timers/WeaponTimers/BoltTimer" to="." method="_on_bolt_timer_timeout"]
+[connection signal="timeout" from="Timers/WeaponTimers/FireTimer" to="." method="_on_fire_timer_timeout"]
+[connection signal="timeout" from="Timers/WeaponTimers/SludgeTimer" to="." method="_on_sludge_timer_timeout"]
 [connection signal="timeout" from="Timers/RegenTimer" to="." method="_on_regen_timer_timeout"]
 
 [editable path="HurtBox"]

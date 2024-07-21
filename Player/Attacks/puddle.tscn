@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://boegi2c6ctyqw"]
+
+[ext_resource type="Script" path="res://Player/Attacks/puddle.gd" id="1_xwmp5"]
+[ext_resource type="Texture2D" uid="uid://cbmfuqkiy8vxf" path="res://Sprites/Items/Weapons/puddle.png" id="2_gbc74"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hernm"]
+radius = 18.0
+
+[node name="Puddle" type="Area2D" groups=["attack"]]
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("1_xwmp5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gbc74")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hernm")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="AttackTimer" type="Timer" parent="." groups=["attack"]]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

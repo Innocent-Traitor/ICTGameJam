@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 var sword_attack = preload("res://Player/Attacks/sword_attack.tscn")
 var arrow_attack = preload("res://Player/Attacks/arrow.tscn")
+var bolt_attack = preload("res://Player/Attacks/bolt.tscn")
+var fire_attack = preload("res://Player/Attacks/fireball.tscn")
+var sludge_attack = preload("res://Player/Attacks/puddle.tscn")
 
 
 @onready var sprite = $AnimatedSprite2D
@@ -10,6 +13,9 @@ var arrow_attack = preload("res://Player/Attacks/arrow.tscn")
 
 @onready var sword_timer = $Timers/WeaponTimers/SwordTimer
 @onready var bow_timer = $Timers/WeaponTimers/ArrowTimer
+@onready var crossbow_timer = $Timers/WeaponTimers/BoltTimer
+@onready var fire_timer = $Timers/WeaponTimers/FireTimer
+@onready var sludge_timer = $Timers/WeaponTimers/SludgeTimer
 
 var non_decay_max_health : int = 100
 var non_decay_health : float = non_decay_max_health
@@ -29,12 +35,13 @@ var collected_upgrades = []
 var sword_level = 0
 var bow_level = 0
 var crossbow_level = 0
+var fire_level = 0
 var sludge_level = 0
 
 var level = 1
 var experience = 0
 var collected_experience = 0
-var speed = 400
+var speed = 100
 
 var enemy_close = []
 
@@ -43,8 +50,7 @@ signal death()
 func _ready() -> void:
 	hud.update_health(health, max_health)
 	hud.update_expbar(experience, calculate_experiencecap())
-	upgrade_character('bow1')
-	upgrade_character('bow4')
+	upgrade_character('sword1')
 
 func start_attack() -> void:
 	if collected_upgrades.has("sword1"):
@@ -55,6 +61,18 @@ func start_attack() -> void:
 		bow_timer.stop()
 		bow_timer.wait_time = 1
 		bow_timer.start()
+	if collected_upgrades.has("crossbow1"):
+		crossbow_timer.stop()
+		crossbow_timer.wait_time = 1.5
+		crossbow_timer.start()
+	if collected_upgrades.has("fire1"):
+		fire_timer.stop()
+		fire_timer.wait_time = 2.5
+		fire_timer.start()
+	if collected_upgrades.has("sludge1"):
+		sludge_timer.stop()
+		sludge_timer.wait_time = 5
+		sludge_timer.start()
 func _process(_delta: float) -> void:
 	handle_movement()
 
@@ -81,6 +99,7 @@ func level_up():
 func upgrade_character(upgrade): # Called in item_option
 	# Match the upgrade 
 	match upgrade:
+		#region Weapons
 		'sword1':
 			sword_level = 1
 		'sword2':
@@ -97,6 +116,31 @@ func upgrade_character(upgrade): # Called in item_option
 			bow_level = 3
 		'bow4':
 			bow_level = 4
+		'crossbow1':
+			crossbow_level = 1
+		'crossbow2':
+			crossbow_level = 2
+		'crossbow3':
+			crossbow_level = 3
+		'crossbow4':
+			crossbow_level = 4
+		'fire1':
+			fire_level = 1
+		'fire2':
+			fire_level = 2
+		'fire3':
+			fire_level = 3
+		'fire4':
+			fire_level = 4
+		'sludge1':
+			sludge_level = 1
+		'sludge2':
+			sludge_level = 2
+		'sludge3':
+			sludge_level = 3
+		'sludge4':
+			sludge_level = 4
+		#endregion
 		#region Upgrade Items
 		'food':
 			health += 25
@@ -247,7 +291,6 @@ func _on_sword_timer_timeout() -> void:
 	sword.level = sword_level
 	weapon_parent.add_child(sword)
 
-
 func _on_arrow_timer_timeout() -> void:
 	var ammo = bow_level
 	if bow_level >= 3:
@@ -263,6 +306,53 @@ func _on_arrow_timer_timeout() -> void:
 	
 	bow_timer.wait_time = 1
 	bow_timer.start()
+
+func _on_bolt_timer_timeout():
+	var bolt = bolt_attack.instantiate()
+	bolt.level = crossbow_level
+	bolt.target = get_global_mouse_position()
+	bolt.position = self.global_position
+	get_tree().current_scene.add_child(bolt)
+
+	crossbow_timer.wait_time = 1.5
+	crossbow_timer.start()
+
+func _on_fire_timer_timeout():
+	var ammo
+	match fire_level:
+		1:
+			ammo = 1
+		2:
+			ammo = 2
+		3:
+			ammo = 2
+		4:
+			ammo = 3
+	
+	for i in range(ammo):
+		var fireball = fire_attack.instantiate()
+		fireball.level = fire_level
+		var ran_pos = Vector2(global_position.x +randf_range(-75, 75), global_position.y + randf_range(-75, 75))
+		fireball.position = ran_pos
+		fireball.z_index = -1
+		get_tree().current_scene.add_child(fireball)
+	
+func _on_sludge_timer_timeout():
+	var ammo = 1
+	var size = 1
+	if sludge_level >= 3:
+		ammo = 2
+	
+	for i in range(ammo):
+		var ran_pos = Vector2(global_position.x +randf_range(-150, 150), global_position.y + randf_range(-150, 150))
+		var sludge = sludge_attack.instantiate()
+		sludge.level = sludge_level
+		sludge.position = ran_pos
+		if sludge_level >= 4:
+			sludge.scale *= 1.5
+		sludge.z_index = -1
+		get_tree().current_scene.add_child(sludge)
+	
 
 
 #endregion

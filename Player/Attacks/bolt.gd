@@ -5,10 +5,10 @@ extends Area2D
 signal remove_from_array(object)
 
 var level = 1
-var hp = 1
-var speed = 150
-var damage = 2
-var knockback_amount = 50
+var hp = 2
+var speed = 250
+var damage = 5
+var knockback_amount = 200
 
 var target = Vector2.ZERO
 var angle = Vector2.ZERO
@@ -22,13 +22,17 @@ func _ready() -> void:
 	# Compare the level to set the correct stats
 	match level:
 		1:
-			damage = 2
+			damage = 5
+			hp = 2
 		2:
-			damage = 4
+			damage = 5
+			hp = 3
 		3:
-			damage = 4
+			damage = 10
+			hp = 5
 		4:
-			damage = 7
+			damage = 15
+			hp = 9999
 	
 	# Tweening
 	#self.scale = Vector2(0.25, 0.25)
@@ -42,8 +46,10 @@ func _physics_process(delta):
 
 
 func enemy_hit(_int):
-	emit_signal("remove_from_array", self)
-	queue_free()
+	hp -= 1
+	if hp <= 0:
+		emit_signal("remove_from_array", self)
+		queue_free()
 
 
 func _on_timer_timeout(): # Despawns the Ice Spear after the timer ends

@@ -9,6 +9,10 @@ extends CanvasLayer
 
 var time = 0
 
+var gui_upgrades = ['sword1', 'bow1', 'crossbow1', 'fire1', 'sludge1', 'heart1', 'boots1', 'bread1', 'whetstone1', 'anvil1']
+var collected_upgrades = []
+var weapon_amount = 0
+var item_amount = 0
 
 func _on_undead_refill_timer_timeout() -> void:
 	undead.value += 1
@@ -47,3 +51,15 @@ func start_levelup() -> void:# 170, 105 <- 170, 360
 
 func update_equipment_gui(upgrade) -> void:
 	levelup.reset_levelup(upgrade)
+	if not upgrade in gui_upgrades:
+		return
+	collected_upgrades.append(upgrade)
+	var get_type = EquipmentDB.UPGRADES[upgrade]["type"]
+	match get_type:
+		"weapon":
+			weapon_amount += 1
+			get_node("%Weapon" + str(weapon_amount)).texture = load(EquipmentDB.UPGRADES[upgrade]["icon"])
+		"item":
+			item_amount += 1
+			get_node("%Item" + str(item_amount)).texture = load(EquipmentDB.UPGRADES[upgrade]["icon"])
+	

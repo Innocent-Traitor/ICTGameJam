@@ -5,47 +5,42 @@ extends Area2D
 signal remove_from_array(object)
 
 var level = 1
-var hp = 1
-var speed = 150
+var speed = 10
 var damage = 2
-var knockback_amount = 50
 
-var target = Vector2.ZERO
 var angle = Vector2.ZERO
 
-
 func _ready() -> void:
-	# Set the angle towards the target, and set rotation
-	angle = global_position.direction_to(target)
-	rotation = angle.angle()
-	
 	# Compare the level to set the correct stats
 	match level:
 		1:
-			damage = 2
+			damage = 3
 		2:
-			damage = 4
+			damage = 5
 		3:
-			damage = 4
+			damage = 8
 		4:
-			damage = 7
+			damage = 8
 	
-	# Tweening
-	#self.scale = Vector2(0.25, 0.25)
+	angle = Vector2(randf_range(-5, 5), randf_range(-5, 5))
+
 	var tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(1, 1), 0.25).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "scale", Vector2(0.1, 0.1), 0)
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.25)
 	tween.play()
 
 
 func _physics_process(delta):
+	rotation += deg_to_rad(5)
 	position += angle * speed * delta
 
 
 func enemy_hit(_int):
 	emit_signal("remove_from_array", self)
-	queue_free()
-
 
 func _on_timer_timeout(): # Despawns the Ice Spear after the timer ends
 	emit_signal("remove_from_array", self)
-	queue_free()
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2.ZERO, 0.5)
+	tween.tween_callback(queue_free)
+	tween.play()

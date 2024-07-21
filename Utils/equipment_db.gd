@@ -33,30 +33,114 @@ const UPGRADES = {
 	},
 	"bow1": {
 		"icon": WEAPON_PATH + "bow.png",
-		"displayname": "Bow",
+		"displayname": "Bow\n",
 		"details": "Randomly shoot an arrow at an enemy",
 		"prerequisite": [],
 		"type": "weapon"
 	},
 	"bow2": {
 		"icon": WEAPON_PATH + "bow.png",
-		"displayname": "Bow",
+		"displayname": "Bow+1\n",
 		"details": "Shot another arrow and do an extra 2 damage",
 		"prerequisite": ["bow1"],
 		"type": "weapon"
 	},
 	"bow3": {
 		"icon": WEAPON_PATH + "bow.png",
-		"displayname": "Bow",
+		"displayname": "Bow+2\n",
 		"details": "Shoot 2 more arrows",
 		"prerequisite": ["bow2"],
 		"type": "weapon"
 	},
 	"bow4": {
 		"icon": WEAPON_PATH + "bow.png",
+		"displayname": "Bow+3\n",
 		"details": "Shot 1 more arrow and do an extra 3 damage",
-		"level": "Level: 4",
 		"prerequisite": ["bow3"],
+		"type": "weapon"
+	},
+	"crossbow1": {
+		"icon": WEAPON_PATH + "crossbow.png",
+		"displayname": "Crossbow\n",
+		"details": "A crossbow that pierces enemies",
+		"prerequisite": [""],
+		"type": "weapon"
+	},
+	"crossbow2": {
+		"icon": WEAPON_PATH + "crossbow.png",
+		"displayname": "Crossbow+1\n",
+		"details": "Pierce 3 enemies in total",
+		"prerequisite": ["crossbow1"],
+		"type": "weapon"
+	},
+	"crossbow3": {
+		"icon": WEAPON_PATH + "crossbow.png",
+		"displayname": "Crossbow+2\n",
+		"details": "Pierce 5 enemies and do an extra 5 damage",
+		"prerequisite": ["crossbow2"],
+		"type": "weapon"
+	},
+	"crossbow4": {
+		"icon": WEAPON_PATH + "crossbow.png",
+		"displayname": "Crossbow+3\n",
+		"details": "Pierce all enemies and do an extra 5 damage",
+		"prerequisite": ["crossbow3"],
+		"type": "weapon"
+	},
+	"fire1": {
+		"icon": WEAPON_PATH + "fire_staff.png",
+		"displayname": "Fire Staff\n",
+		"details": "Drop a fireball around yourself",
+		"prerequisite": [""],
+		"type": "weapon"
+	},
+	"fire2": {
+		"icon": WEAPON_PATH + "fire_staff.png",
+		"displayname": "Fire Staff+1\n",
+		"details": "Drop an additional fireball and do an extra 2 damage",
+		"prerequisite": ["fire1"],
+		"type": "weapon"
+	},
+	"fire3": {
+		"icon": WEAPON_PATH + "fire_staff.png",
+		"displayname": "Fire Staff+2\n",
+		"details": "Deel an extra 3 damage",
+		"prerequisite": ["fire2"],
+		"type": "weapon"
+	},
+	"fire4": {
+		"icon": WEAPON_PATH + "fire_staff.png",
+		"displayname": "Fire Staff+3\n",
+		"details": "Drop an additional fireball",
+		"prerequisite": ["fire3"],
+		"type": "weapon"
+	},
+	"sludge1": {
+		"icon": WEAPON_PATH + "sludge.png",
+		"displayname": "Sludge Bucket\n",
+		"details": "Throw a puddle of sludge randomly and deal damage over time",
+		"prerequisite": [""],
+		"type": "weapon"
+	},
+	"sludge2": {
+		"icon": WEAPON_PATH + "sludge.png",
+		"displayname": "Sludge Bucket+1\n",
+		"details": "Deal 1 extra damage",
+		"prerequisite": ["sludge1"],
+		"type": "weapon"
+	},
+	"sludge3": {
+		"icon": WEAPON_PATH + "sludge.png",
+		"displayname": "Sludge Bucket+2\n",
+		"details": "Throw an extra sludge puddle",
+		"prerequisite": ["sludge2"],
+		"type": "weapon"
+	},
+	"sludge4": {
+		"icon": WEAPON_PATH + "sludge.png",
+		"displayname": "Sludge Bucket+3\n",
+		"details": "Make the puddle 50% bigger and deal 1 extra damage",
+		"prerequisite": ["sludge3"],
 		"type": "weapon"
 	},
 	#region Items
@@ -173,7 +257,4 @@ const UPGRADES = {
 		"type": "item"
 	},
 	#endregion
-	
-
-
 }

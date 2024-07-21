@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://0whnvxusnrcb"]
+[gd_scene load_steps=11 format=3 uid="uid://0whnvxusnrcb"]
 
 [ext_resource type="Script" path="res://Player/game_handler.gd" id="1_l7oeo"]
 [ext_resource type="Texture2D" uid="uid://b16q7kqq86ywc" path="res://Sprites/GUI/item_box.png" id="2_f3oh7"]
-[ext_resource type="Texture2D" uid="uid://bwmf3q6fkt06a" path="res://Sprites/tile_0108.png" id="2_qpm5h"]
 [ext_resource type="Texture2D" uid="uid://cedowew0qbn2o" path="res://Sprites/GUI/ability_box.png" id="4_mujsc"]
 [ext_resource type="Texture2D" uid="uid://dg8hfc3v6twnj" path="res://Sprites/tile_0084.png" id="4_x3l7f"]
 [ext_resource type="Texture2D" uid="uid://cgrpa0xq1e02m" path="res://Sprites/GUI/radial_fill.png" id="5_w6rtu"]
@@ -47,23 +46,27 @@ layout_mode = 2
 theme_override_constants/separation = 1
 
 [node name="Weapon1" type="TextureRect" parent="EquipmentContainer/WeaponContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-texture = ExtResource("2_qpm5h")
 
 [node name="Weapon2" type="TextureRect" parent="EquipmentContainer/WeaponContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 
 [node name="Weapon3" type="TextureRect" parent="EquipmentContainer/WeaponContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 
 [node name="Weapon4" type="TextureRect" parent="EquipmentContainer/WeaponContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 
 [node name="Weapon5" type="TextureRect" parent="EquipmentContainer/WeaponContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 
@@ -72,22 +75,27 @@ layout_mode = 2
 theme_override_constants/separation = 1
 
 [node name="Item1" type="TextureRect" parent="EquipmentContainer/ItemContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 
 [node name="Item2" type="TextureRect" parent="EquipmentContainer/ItemContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 
 [node name="Item3" type="TextureRect" parent="EquipmentContainer/ItemContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 
 [node name="Item4" type="TextureRect" parent="EquipmentContainer/ItemContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 
 [node name="Item5" type="TextureRect" parent="EquipmentContainer/ItemContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 

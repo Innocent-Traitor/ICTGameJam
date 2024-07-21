@@ -34,6 +34,7 @@ collision_layer = 64
 collision_mask = 32
 script = ExtResource("1_2h4de")
 hp = 5
+experience = 5
 enemy_damage = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
