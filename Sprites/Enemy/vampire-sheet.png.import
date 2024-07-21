@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg8hfc3v6twnj"
-path="res://.godot/imported/tile_0084.png-d636077838c02be516e57f83da1ab475.ctex"
+uid="uid://c8wc6opid0pct"
+path="res://.godot/imported/vampire-sheet.png-33b889b3650f1de7ea0d84840594bce4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/tile_0084.png"
-dest_files=["res://.godot/imported/tile_0084.png-d636077838c02be516e57f83da1ab475.ctex"]
+source_file="res://Sprites/Enemy/vampire-sheet.png"
+dest_files=["res://.godot/imported/vampire-sheet.png-33b889b3650f1de7ea0d84840594bce4.ctex"]
 
 [params]
 

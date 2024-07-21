@@ -6,7 +6,6 @@ var bolt_attack = preload("res://Player/Attacks/bolt.tscn")
 var fire_attack = preload("res://Player/Attacks/fireball.tscn")
 var sludge_attack = preload("res://Player/Attacks/puddle.tscn")
 
-
 @onready var sprite = $AnimatedSprite2D
 @onready var hud = $HUD
 @onready var weapon_parent = $WeaponParent

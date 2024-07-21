@@ -4,7 +4,6 @@ Abiliites are done as well 🤠🤠🤠🤠🤠🤠🤠🤠 - Sun @ 0440
 
 
 Enemies - 
-Revenant - Upgraded Skeleton
 Zombie - Slow but will cause a DoT
 Ghoul - Upgraded Zombie
 Gargoyle - Low health, but flies above other enemies
@@ -15,5 +14,7 @@ Vampire - Transforms between a bit bat and the player during the fight
 Necromancer - BBEG, will summon skeletons and zombies out of the ground, summon the banshee to do the scream or the vampire to swoop in as a bat
 
 
-Enemy Grind
+Enemy Grind <- All the sprites are done
+Map redo <- Less than an hour
+Spawn Info <- 30 minutes
 Menu <- Sunday only

@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5tv0gaiw2d1v"]
+
+[ext_resource type="Texture2D" uid="uid://bdqw4h3x4ibby" path="res://Sprites/Enemy/skeleton-sheet.png" id="2_wnink"]
+[ext_resource type="PackedScene" uid="uid://b1pkc6tnk7gih" path="res://Enemy/enemy_base.tscn" id="3_xcssf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vk1c"]
+atlas = ExtResource("2_wnink")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5bib"]
+atlas = ExtResource("2_wnink")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lg17s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vk1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5bib")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrf80"]
+radius = 6.0
+
+[node name="Skeleton" type="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 32
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lg17s")
+frame_progress = 0.671315
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xrf80")
+debug_color = Color(0, 0.129412, 0.156863, 0.419608)
+
+[node name="EnemyBase" parent="." instance=ExtResource("3_xcssf")]
+
+[node name="HurtBox" parent="EnemyBase" index="0"]
+collision_mask = 16
+HurtBoxType = 1
+
+[node name="HitBox" parent="EnemyBase" index="1"]
+collision_mask = 2
+
+[editable path="EnemyBase"]
+[editable path="EnemyBase/HurtBox"]
+[editable path="EnemyBase/HitBox"]
