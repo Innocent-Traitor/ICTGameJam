@@ -18,14 +18,14 @@ var sludge_attack = preload("res://Player/Attacks/puddle.tscn")
 @onready var sludge_timer = $Timers/WeaponTimers/SludgeTimer
 
 var non_decay_max_health : int = 100
-var non_decay_health : float = non_decay_max_health
+var non_decay_health : float = 100
 var non_decay_health_regen : float = 0
 var non_decay_attack : float = 1.0
 var non_decay_defense : float = 0.0
 var non_decay_speed_mult : float = 1.0
 
 var max_health = non_decay_max_health
-var health  = non_decay_health
+var health  = 1
 var health_regen = non_decay_health_regen
 var attack = non_decay_attack
 var defense = non_decay_defense
@@ -37,6 +37,10 @@ var bow_level = 0
 var crossbow_level = 0
 var fire_level = 0
 var sludge_level = 0
+
+var active_ability = null
+var secondary_ability = null
+var passive_ability = null
 
 var level = 1
 var experience = 0
@@ -50,6 +54,7 @@ func _ready() -> void:
 	hud.update_health(health, max_health)
 	hud.update_expbar(experience, calculate_experiencecap())
 	upgrade_character('sword1')
+	gain_ability('freezeblast2')
 
 ## Restart the attack timers
 func start_attack() -> void:
@@ -205,18 +210,41 @@ func upgrade_character(upgrade): # Called in item_option
 			defense += 0.05
 		#endregion
 
-
-			
+		
 	collected_upgrades.append(upgrade)
 	start_attack() # Sets new upgrade params for attacks
 	hud.update_equipment_gui(upgrade)
 	get_tree().paused = false
 	calculate_experience(0) # Calls the function again to make sure we use all EXP
 
-func handle_death() -> void:
-	# Check to see if we can respawn
+func gain_ability(ability) -> void:
+	max_health = non_decay_max_health
+	health  = non_decay_health / 2
+	hud.update_health(health, max_health)
+	health_regen = non_decay_health_regen
+	attack = non_decay_attack
+	defense = non_decay_defense
+	speed_mult = non_decay_speed_mult
+	decay_percentage = 1
 
-	hud.game_over()
+
+	var type = EquipmentDB.ABILITY[ability]["type"]
+	match type:
+		"Active":
+			active_ability = ability
+		"Secondary":
+			secondary_ability = ability
+		"Passive":
+			passive_ability = ability
+	
+	hud.update_ability_gui(ability, type)
+	get_tree().paused = false
+
+func handle_death() -> void:
+	if hud.can_respawn():
+		hud.start_respawn()
+	else:
+		hud.game_over()
 
 ## Pick a random target from the enemy_close array, and return the postion
 func get_random_target():
@@ -225,6 +253,42 @@ func get_random_target():
 	else: # If there are no enemies, just return up to prevent errors/crashing
 		return Vector2.UP
 
+
+func _unhandled_key_input(event):
+	if event.is_action_pressed('active'):
+		match active_ability:
+			'freezeblast1':
+				var enemies = get_tree().get_first_node_in_group('enemyspawn').get_children()
+				var frozen_enemies = []
+				for enemy in enemies:
+					if enemy is CharacterBody2D:
+						enemy.speed = 0
+						enemy.modulate = Color(0, 1, 1, 1)
+						frozen_enemies.append(enemy)
+				
+				await get_tree().create_timer(5).timeout
+				for enemy in frozen_enemies:
+					if enemy.is_inside_tree():
+						enemy.modulate = Color(1, 1, 1, 1)
+						enemy.speed = enemy.movement_speed
+			
+			'freezeblast2':
+				var enemies = get_tree().get_first_node_in_group('enemyspawn').get_children()
+				var frozen_enemies = []
+				for enemy in enemies:
+					if enemy is CharacterBody2D:
+						enemy.speed = 0
+						enemy.modulate = Color(0, 1, 1, 1)
+						frozen_enemies.append(enemy)
+				
+				await get_tree().create_timer(1).timeout
+				for enemy in frozen_enemies:
+					if enemy.is_inside_tree():
+						enemy.modulate = Color(1, 1, 1, 1)
+						enemy.speed = enemy.movement_speed
+						enemy._on_hurt_box_hurt(5, Vector2.ZERO, 0)
+						
+		
 
 #region Experience
 ## Calculate the experience we just got and see if we level up

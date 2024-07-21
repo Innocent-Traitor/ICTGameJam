@@ -1,7 +1,7 @@
 extends Node
 const WEAPON_PATH = "res://Sprites/Items/Weapons/"
 const ICON_PATH = "res://Sprites/Items/Upgrades/"
-const ABILITY_PATH = "res://Sprites/Items/Abilities/"
+const ABILITY_PATH = "res://Sprites/Items/Ability/"
 const UPGRADES = {
 	"sword1": {
 		"icon": WEAPON_PATH + "sword.png",
@@ -332,17 +332,24 @@ const ABILITY = {
 	},
 	"holy1": {
 		"icon": ABILITY_PATH + "holy.png",
-		"displayname": "Holy Potion\n",
+		"displayname": "Holy Orb\n",
 		"details": "Passive: Decay takes twice as long to happen",
 		"prerequisite": [],
 		"type": "Passive"
 	},
 	"holy2": {
 		"icon": ABILITY_PATH + "holy.png",
-		"displayname": "Holy Potion+\n",
+		"displayname": "Holy Orb+\n",
 		"details": "Passive: Decay can only reduce your stats by 25%",
 		"prerequisite": ['holy1'],
 		"type": "Passive"
 	},
+	'nothing': {
+		"icon": ABILITY_PATH + "nothing.png",
+		"displayname": "MISSINGNO\n",
+		"details": "Sorry Nothing",
+		"prerequisite": [],
+		"type": "Nothing"
+	}
 
 }

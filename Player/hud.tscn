@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://0whnvxusnrcb"]
+[gd_scene load_steps=13 format=3 uid="uid://0whnvxusnrcb"]
 
 [ext_resource type="Script" path="res://Player/game_handler.gd" id="1_l7oeo"]
 [ext_resource type="Texture2D" uid="uid://b16q7kqq86ywc" path="res://Sprites/GUI/item_box.png" id="2_f3oh7"]
 [ext_resource type="Texture2D" uid="uid://cedowew0qbn2o" path="res://Sprites/GUI/ability_box.png" id="4_mujsc"]
-[ext_resource type="Texture2D" uid="uid://dg8hfc3v6twnj" path="res://Sprites/tile_0084.png" id="4_x3l7f"]
 [ext_resource type="Texture2D" uid="uid://cgrpa0xq1e02m" path="res://Sprites/GUI/radial_fill.png" id="5_w6rtu"]
 [ext_resource type="Texture2D" uid="uid://d2s6gmat54vcl" path="res://Sprites/Items/Weapons/sword.png" id="7_m2irn"]
 [ext_resource type="Script" path="res://Player/level_up_panel.gd" id="7_xs7iq"]
+[ext_resource type="Script" path="res://Player/ability_panel.gd" id="8_nbmf6"]
+[ext_resource type="Script" path="res://Player/ability_frame.gd" id="9_0lona"]
 [ext_resource type="Script" path="res://Player/game_over_panel.gd" id="9_oqx23"]
 [ext_resource type="Script" path="res://Player/item_frame.gd" id="9_pi83r"]
 
@@ -123,16 +124,18 @@ offset_bottom = 32.6
 theme_override_constants/separation = 1
 
 [node name="ActiveAbilitySprite" type="TextureRect" parent="AbilityContainer"]
+unique_name_in_owner = true
 modulate = Color(0.662745, 0.662745, 0.662745, 0.329412)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("4_x3l7f")
 
 [node name="SecondaryAbilitySprite" type="TextureRect" parent="AbilityContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
 [node name="PassiveAbilitySprite" type="TextureRect" parent="AbilityContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
@@ -195,8 +198,8 @@ tint_progress = Color(0.745098, 0, 0, 1)
 [node name="UndeadBar" type="TextureProgressBar" parent="BarContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-max_value = 150.0
-value = 75.0
+max_value = 120.0
+value = 115.0
 nine_patch_stretch = true
 texture_under = ExtResource("5_w6rtu")
 texture_progress = ExtResource("5_w6rtu")
@@ -346,6 +349,7 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+script = ExtResource("8_nbmf6")
 
 [node name="Label" type="Label" parent="AbilityPanel"]
 layout_mode = 1
@@ -375,7 +379,7 @@ size_flags_horizontal = 3
 
 [node name="Item0" type="VBoxContainer" parent="AbilityPanel/TextureContainer"]
 layout_mode = 2
-script = ExtResource("9_pi83r")
+script = ExtResource("9_0lona")
 
 [node name="Texture" type="TextureRect" parent="AbilityPanel/TextureContainer/Item0"]
 custom_minimum_size = Vector2(48, 48)
@@ -398,7 +402,7 @@ size_flags_horizontal = 3
 
 [node name="Item1" type="VBoxContainer" parent="AbilityPanel/TextureContainer"]
 layout_mode = 2
-script = ExtResource("9_pi83r")
+script = ExtResource("9_0lona")
 
 [node name="Texture" type="TextureRect" parent="AbilityPanel/TextureContainer/Item1"]
 custom_minimum_size = Vector2(48, 48)
@@ -421,7 +425,7 @@ size_flags_horizontal = 3
 
 [node name="Item2" type="VBoxContainer" parent="AbilityPanel/TextureContainer"]
 layout_mode = 2
-script = ExtResource("9_pi83r")
+script = ExtResource("9_0lona")
 
 [node name="Texture" type="TextureRect" parent="AbilityPanel/TextureContainer/Item2"]
 custom_minimum_size = Vector2(48, 48)

@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var expbar = $ExpBar
 @onready var time_label = $TimeLabel
 @onready var levelup = $LevelUpPanel
+@onready var respawn = $AbilityPanel
 @onready var loss = $GameOverPanel
 
 var time = 0
@@ -40,7 +41,7 @@ func change_time(argtime = 0):
 		get_s = str(0,get_s)
 	time_label.text = str(get_m,":",get_s)
 
-func start_levelup() -> void:# 170, 105 <- 170, 360
+func start_levelup() -> void:
 	levelup.handle_levelup()
 	levelup.position = Vector2(170, 360)
 	levelup.visible = true
@@ -49,6 +50,15 @@ func start_levelup() -> void:# 170, 105 <- 170, 360
 	tween.play()
 	get_tree().paused = true
 
+func start_respawn() -> void:
+	undead.value = 0
+	respawn.handle_ability()
+	respawn.position = Vector2(170, 360)
+	respawn.visible = true
+	var tween = create_tween()
+	tween.tween_property(respawn, "position", Vector2(170, 105), 0.15).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
+	tween.play()
+	get_tree().paused = true
 
 func update_equipment_gui(upgrade) -> void:
 	levelup.reset_levelup(upgrade)
@@ -64,7 +74,26 @@ func update_equipment_gui(upgrade) -> void:
 			item_amount += 1
 			get_node("%Item" + str(item_amount)).texture = load(EquipmentDB.UPGRADES[upgrade]["icon"])
 
+func update_ability_gui(ability, type) -> void:
+	respawn.reset_panel(ability)
+	undead.value = 0
+	match type:
+		"Active":
+			%ActiveAbilitySprite.texture = load(EquipmentDB.ABILITY[ability]["icon"])
+		"Secondary":
+			%SecondaryAbilitySprite.texture = load(EquipmentDB.ABILITY[ability]["icon"])
+		"Passive":
+			%PassiveAbilitySprite.texture = load(EquipmentDB.ABILITY[ability]["icon"])
+
+func set_ability_cooldown(type, cooldown) -> void:
+	pass
 
 func game_over() -> void:
 	get_tree().paused = true
 	loss.show_game_over()
+
+func can_respawn() -> bool:
+	if undead.value == undead.max_value:
+		return true
+	else:
+		return false

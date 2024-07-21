@@ -128,7 +128,7 @@ position = Vector2(168, -168)
 shape = SubResource("RectangleShape2D_cjnyb")
 
 [node name="LeftMonitor" type="Area2D" parent="WorldMap"]
-position = Vector2(123, 0)
+position = Vector2(125, 0)
 collision_layer = 0
 collision_mask = 32
 monitorable = false
@@ -163,7 +163,7 @@ position = Vector2(170, 209)
 
 [node name="LootParent" type="Node2D" parent="." groups=["loot"]]
 
-[node name="EnemySpawner" parent="." instance=ExtResource("7_73sun")]
+[node name="EnemySpawner" parent="." groups=["enemyspawn"] instance=ExtResource("7_73sun")]
 spawns = Array[ExtResource("8_vuj6s")]([SubResource("Resource_v5ilo")])
 
 [connection signal="body_entered" from="WorldMap/TopMonitor" to="WorldMap" method="_on_top_monitor_body_entered"]

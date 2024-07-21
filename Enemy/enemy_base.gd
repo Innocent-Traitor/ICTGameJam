@@ -24,6 +24,8 @@ var knockback = Vector2.ZERO
 var death_anim = preload("res://Utils/death_ani.tscn")
 var exp_gem = preload("res://Objects/loot.tscn")
 
+var speed = movement_speed
+
 # Signals
 signal remove_from_array(object)
 
