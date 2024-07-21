@@ -3,4 +3,6 @@
 [ext_resource type="FontFile" uid="uid://b5gjs13pmfooe" path="res://Resources/Kenney Pixel.ttf" id="1_5iqaf"]
 
 [resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_5iqaf")
 Label/fonts/font = ExtResource("1_5iqaf")

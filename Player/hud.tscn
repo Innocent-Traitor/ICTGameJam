@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://0whnvxusnrcb"]
+[gd_scene load_steps=12 format=3 uid="uid://0whnvxusnrcb"]
 
 [ext_resource type="Script" path="res://Player/game_handler.gd" id="1_l7oeo"]
 [ext_resource type="Texture2D" uid="uid://b16q7kqq86ywc" path="res://Sprites/GUI/item_box.png" id="2_f3oh7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cgrpa0xq1e02m" path="res://Sprites/GUI/radial_fill.png" id="5_w6rtu"]
 [ext_resource type="Texture2D" uid="uid://d2s6gmat54vcl" path="res://Sprites/Items/Weapons/sword.png" id="7_m2irn"]
 [ext_resource type="Script" path="res://Player/level_up_panel.gd" id="7_xs7iq"]
+[ext_resource type="Script" path="res://Player/game_over_panel.gd" id="9_oqx23"]
 [ext_resource type="Script" path="res://Player/item_frame.gd" id="9_pi83r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1it3r"]
@@ -331,6 +332,179 @@ autowrap_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="AbilityPanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="AbilityPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 49.0
+grow_horizontal = 2
+text = "NOT DEAD YET!
+Select a new ability!"
+horizontal_alignment = 1
+
+[node name="TextureContainer" type="HBoxContainer" parent="AbilityPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -62.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Spacer3" type="Control" parent="AbilityPanel/TextureContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Item0" type="VBoxContainer" parent="AbilityPanel/TextureContainer"]
+layout_mode = 2
+script = ExtResource("9_pi83r")
+
+[node name="Texture" type="TextureRect" parent="AbilityPanel/TextureContainer/Item0"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("7_m2irn")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="AbilityPanel/TextureContainer/Item0"]
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sword
+A sword slashed where you are aiming"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="AbilityPanel/TextureContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Item1" type="VBoxContainer" parent="AbilityPanel/TextureContainer"]
+layout_mode = 2
+script = ExtResource("9_pi83r")
+
+[node name="Texture" type="TextureRect" parent="AbilityPanel/TextureContainer/Item1"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("7_m2irn")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="AbilityPanel/TextureContainer/Item1"]
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sword
+A sword slashed where you are aiming"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Spacer2" type="Control" parent="AbilityPanel/TextureContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Item2" type="VBoxContainer" parent="AbilityPanel/TextureContainer"]
+layout_mode = 2
+script = ExtResource("9_pi83r")
+
+[node name="Texture" type="TextureRect" parent="AbilityPanel/TextureContainer/Item2"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("7_m2irn")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="AbilityPanel/TextureContainer/Item2"]
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sword
+A sword slashed where you are aiming"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Spacer4" type="Control" parent="AbilityPanel/TextureContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameOverPanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+script = ExtResource("9_oqx23")
+
+[node name="Label" type="Label" parent="GameOverPanel"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 101.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "GAME OVER
+The necromancer continues their reign, waiting for the next foolish opponent to fight..."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.85
+anchor_right = 1.0
+anchor_bottom = 0.85
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Control2" type="Control" parent="GameOverPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RestartButton" type="Button" parent="GameOverPanel/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+disabled = true
+text = "Restart"
+
+[node name="Control" type="Control" parent="GameOverPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MenuButton" type="Button" parent="GameOverPanel/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+disabled = true
+text = "Menu"
+
+[node name="Control3" type="Control" parent="GameOverPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="TimeLabel" type="Label" parent="."]
 anchors_preset = -1
 anchor_left = 0.925
@@ -352,3 +526,9 @@ vertical_alignment = 1
 [connection signal="mouse_exited" from="LevelUpPanel/TextureContainer/Item1" to="LevelUpPanel/TextureContainer/Item1" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="LevelUpPanel/TextureContainer/Item2" to="LevelUpPanel/TextureContainer/Item2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="LevelUpPanel/TextureContainer/Item2" to="LevelUpPanel/TextureContainer/Item2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="AbilityPanel/TextureContainer/Item0" to="AbilityPanel/TextureContainer/Item0" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="AbilityPanel/TextureContainer/Item0" to="AbilityPanel/TextureContainer/Item0" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="AbilityPanel/TextureContainer/Item1" to="AbilityPanel/TextureContainer/Item1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="AbilityPanel/TextureContainer/Item1" to="AbilityPanel/TextureContainer/Item1" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="AbilityPanel/TextureContainer/Item2" to="AbilityPanel/TextureContainer/Item2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="AbilityPanel/TextureContainer/Item2" to="AbilityPanel/TextureContainer/Item2" method="_on_mouse_exited"]

@@ -6,6 +6,7 @@ Dodge - Secondary - to do a cooldown dodge (invincibility frames) - 2 Charges
 Wind Blast - Secondary - Push all enemies away from the player - Do a second one towards the mouse position with a farther distance
 
 Last Chance - Passive - If the player is about to do, they get bullet time and invincibility to undo their situation (Game moves at .5 speed, player moves at .75 speed)  - Player and weapons go at full speed 
+Holy Potion - Passive - Decay takes longer to happen - Decay can only go to 25%
 
 
 
@@ -24,7 +25,6 @@ Vampire - Transforms between a bit bat and the player during the fight
 Necromancer - BBEG, will summon skeletons and zombies out of the ground, summon the banshee to do the scream or the vampire to swoop in as a bat
 
 Abilities <- FUCK YOU
-Stat Decay <-- Easy, take less than 30 minutes
 Death/Respawn <-- Reuse as much as the level up as we can
 Menu <- Sunday only
 GameOver <- Sunday Only

@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var expbar = $ExpBar
 @onready var time_label = $TimeLabel
 @onready var levelup = $LevelUpPanel
+@onready var loss = $GameOverPanel
 
 var time = 0
 
@@ -62,4 +63,8 @@ func update_equipment_gui(upgrade) -> void:
 		"item":
 			item_amount += 1
 			get_node("%Item" + str(item_amount)).texture = load(EquipmentDB.UPGRADES[upgrade]["icon"])
-	
+
+
+func game_over() -> void:
+	get_tree().paused = true
+	loss.show_game_over()

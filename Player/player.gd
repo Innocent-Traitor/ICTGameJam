@@ -42,16 +42,16 @@ var level = 1
 var experience = 0
 var collected_experience = 0
 var speed = 100
+var decay_percentage = 1
 
 var enemy_close = []
-
-signal death()
 
 func _ready() -> void:
 	hud.update_health(health, max_health)
 	hud.update_expbar(experience, calculate_experiencecap())
 	upgrade_character('sword1')
 
+## Restart the attack timers
 func start_attack() -> void:
 	if collected_upgrades.has("sword1"):
 		sword_timer.stop()
@@ -73,6 +73,8 @@ func start_attack() -> void:
 		sludge_timer.stop()
 		sludge_timer.wait_time = 5
 		sludge_timer.start()
+
+
 func _process(_delta: float) -> void:
 	handle_movement()
 
@@ -212,7 +214,9 @@ func upgrade_character(upgrade): # Called in item_option
 	calculate_experience(0) # Calls the function again to make sure we use all EXP
 
 func handle_death() -> void:
-	pass
+	# Check to see if we can respawn
+
+	hud.game_over()
 
 ## Pick a random target from the enemy_close array, and return the postion
 func get_random_target():
@@ -282,6 +286,19 @@ func update_time(time) -> void:
 func _on_regen_timer_timeout() -> void:
 	health += health_regen
 	hud.update_health(health, max_health)
+
+func _on_decay_timer_timeout():
+	if decay_percentage >= 0.5:
+		decay_percentage -= 0.0025
+		print(decay_percentage)
+		max_health = non_decay_max_health * decay_percentage
+		health = health * decay_percentage
+		hud.update_health(health, max_health)
+		health_regen = non_decay_health_regen * decay_percentage
+		attack = non_decay_attack * decay_percentage
+		defense = non_decay_defense * decay_percentage
+		speed_mult = non_decay_speed_mult * decay_percentage
+
 #endregion
 
 #region Weapon Signals/Timers
@@ -339,7 +356,6 @@ func _on_fire_timer_timeout():
 	
 func _on_sludge_timer_timeout():
 	var ammo = 1
-	var size = 1
 	if sludge_level >= 3:
 		ammo = 2
 	
@@ -352,7 +368,5 @@ func _on_sludge_timer_timeout():
 			sludge.scale *= 1.5
 		sludge.z_index = -1
 		get_tree().current_scene.add_child(sludge)
-	
-
 
 #endregion

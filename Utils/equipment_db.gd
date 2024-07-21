@@ -258,3 +258,91 @@ const UPGRADES = {
 	},
 	#endregion
 }
+
+const ABILITY = {
+	"freezeblast1": {
+		"icon": ABILITY_PATH + "freeze.png",
+		"displayname": "Freeze Blast\n",
+		"details": "Active: Freeze all enemies for 10 seconds",
+		"prerequisite": [],
+		"type": "Active"
+	},
+	"freezeblast2": {
+		"icon": ABILITY_PATH + "freeze.png",
+		"displayname": "Freeze Blast+\n",
+		"details": "Active: Do 20 damage when freezing an enemy",
+		"prerequisite": ['freezeblast1'],
+		"type": "Active"
+	},
+	"rush1": {
+		"icon": ABILITY_PATH + "rush.png",
+		"displayname": "Rush B!\n",
+		"details": "Active: Double Speed, 50% damage reduction for 5 seconds",
+		"prerequisite": [],
+		"type": "Active"
+	},
+	"rush2": {
+		"icon": ABILITY_PATH + "rush.png",
+		"displayname": "Rush B!+\n",
+		"details": "Active: Nullify all damage and ability lasts 10 seconds",
+		"prerequisite": ['rush1'],
+		"type": "Active"
+	},
+	"dodge1": {
+		"icon": ABILITY_PATH + "dodge.png",
+		"displayname": "Roll\n",
+		"details": "Secondary: Move towards the mouse cursor and dodge attacks",
+		"prerequisite": [],
+		"type": "Secondary"
+	},
+	"dodge2": {
+		"icon": ABILITY_PATH + "dodge.png",
+		"displayname": "Roll+\n",
+		"details": "Secondary: You can dodge twice before the cooldown ends",
+		"prerequisite": ['dodge1'],
+		"type": "Secondary"
+	},
+	"windblast1": {
+		"icon": ABILITY_PATH + "windblast.png",
+		"displayname": "Wind Blast\n",
+		"details": "Secondary: Push all enemies away from you",
+		"prerequisite": [],
+		"type": "Secondary"
+	},
+	"windblast2": {
+		"icon": ABILITY_PATH + "windblast.png",
+		"displayname": "Wind Blast+\n",
+		"details": "Secondary: Push enemies you are facing farther away",
+		"prerequisite": ['windblast1'],
+		"type": "Secondary"
+	},
+	"lastchance1": {
+		"icon": ABILITY_PATH + "lastchance.png",
+		"displayname": "Last Chance\n",
+		"details": "Passive: Before you die, get bullet time for 5 seconds",
+		"prerequisite": [],
+		"type": "Passive"
+	},
+	"lastchance2": {
+		"icon": ABILITY_PATH + "lastchance.png",
+		"displayname": "Last Chance+\n",
+		"details": "Passive: You and your attacks move at full speed during bullet time",
+		"prerequisite": ['lastchance1'],
+		"type": "Passive"
+	},
+	"holy1": {
+		"icon": ABILITY_PATH + "holy.png",
+		"displayname": "Holy Potion\n",
+		"details": "Passive: Decay takes twice as long to happen",
+		"prerequisite": [],
+		"type": "Passive"
+	},
+	"holy2": {
+		"icon": ABILITY_PATH + "holy.png",
+		"displayname": "Holy Potion+\n",
+		"details": "Passive: Decay can only reduce your stats by 25%",
+		"prerequisite": ['holy1'],
+		"type": "Passive"
+	},
+
+}

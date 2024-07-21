@@ -132,6 +132,10 @@ wait_time = 5.0
 wait_time = 5.0
 autostart = true
 
+[node name="DecayTimer" type="Timer" parent="Timers"]
+wait_time = 5.0
+autostart = true
+
 [node name="HUD" parent="." instance=ExtResource("4_a3d5b")]
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
@@ -145,5 +149,6 @@ autostart = true
 [connection signal="timeout" from="Timers/WeaponTimers/FireTimer" to="." method="_on_fire_timer_timeout"]
 [connection signal="timeout" from="Timers/WeaponTimers/SludgeTimer" to="." method="_on_sludge_timer_timeout"]
 [connection signal="timeout" from="Timers/RegenTimer" to="." method="_on_regen_timer_timeout"]
+[connection signal="timeout" from="Timers/DecayTimer" to="." method="_on_decay_timer_timeout"]
 
 [editable path="HurtBox"]
