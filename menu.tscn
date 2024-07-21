@@ -1,7 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0k8dgssxd05g"]
+[gd_scene load_steps=27 format=3 uid="uid://b0k8dgssxd05g"]
 
 [ext_resource type="Texture2D" uid="uid://dr4pa26u0mxfv" path="res://Sprites/GUI/MoonsoftStudios2-01.png" id="1_6uaon"]
 [ext_resource type="Script" path="res://start_button.gd" id="1_f4flk"]
+[ext_resource type="Texture2D" uid="uid://bvx3uu2cqufjs" path="res://Sprites/Items/Weapons/crossbow.png" id="3_4v7yl"]
+[ext_resource type="Texture2D" uid="uid://bsm02cgwun0uv" path="res://Sprites/Items/Weapons/fire_staff.png" id="4_t8cnb"]
+[ext_resource type="Texture2D" uid="uid://cbmfuqkiy8vxf" path="res://Sprites/Items/Weapons/puddle.png" id="5_jnjhe"]
+[ext_resource type="Texture2D" uid="uid://dp1r4v3uakwr0" path="res://Sprites/Items/Weapons/sludge.png" id="6_h6d5u"]
+[ext_resource type="Texture2D" uid="uid://d2s6gmat54vcl" path="res://Sprites/Items/Weapons/sword.png" id="7_vylrh"]
+[ext_resource type="Texture2D" uid="uid://pklywb2uboqr" path="res://Sprites/Loot/Loot2.png" id="8_n32qp"]
+[ext_resource type="Texture2D" uid="uid://p0kb7q831lbu" path="res://Sprites/Loot/Loot3.png" id="9_2tpm0"]
+[ext_resource type="Texture2D" uid="uid://cabpa6gyt5r6u" path="res://Sprites/Loot/Loot1.png" id="10_iwaos"]
+[ext_resource type="Texture2D" uid="uid://33vr0xf6id03" path="res://Sprites/Items/Upgrades/food.png" id="11_5jxhm"]
+[ext_resource type="Texture2D" uid="uid://bldk1anutbcgu" path="res://Sprites/Items/Upgrades/whetstone.png" id="12_0wjlg"]
+[ext_resource type="Texture2D" uid="uid://cvwapyx7kbajm" path="res://Sprites/Items/Ability/lastchance.png" id="13_7r2iv"]
+[ext_resource type="Texture2D" uid="uid://dqju4dnwua23m" path="res://Sprites/Items/Ability/nothing.png" id="14_eceav"]
+[ext_resource type="Texture2D" uid="uid://c0q1b6nyycoa0" path="res://Sprites/Items/Ability/windblast.png" id="15_syfdq"]
+[ext_resource type="Texture2D" uid="uid://cmlhatou5pnf" path="res://Sprites/Items/Ability/holy.png" id="16_m6uir"]
+[ext_resource type="Texture2D" uid="uid://dbsf25v3rpkn3" path="res://Sprites/Items/Ability/freeze.png" id="17_6unp4"]
+[ext_resource type="Texture2D" uid="uid://kkvv7nq528wi" path="res://Sprites/Items/Ability/dodge.png" id="18_x2d84"]
+[ext_resource type="Texture2D" uid="uid://dd2rirrjj6cbu" path="res://Sprites/Enemy/banshee-sheet.png" id="19_3l0c6"]
+[ext_resource type="Texture2D" uid="uid://cb8mg6oar24d3" path="res://Sprites/Enemy/bat-sheet.png" id="20_hix48"]
+[ext_resource type="Texture2D" uid="uid://ct53776wg61s" path="res://Sprites/Enemy/zombie-sheet.png" id="21_at7un"]
+[ext_resource type="Texture2D" uid="uid://c3njcbvxjbpvj" path="res://Sprites/Enemy/spectre-sheet.png" id="22_jgbni"]
+[ext_resource type="Texture2D" uid="uid://bxck00ygei5db" path="res://Sprites/Enemy/revenant-sheet.png" id="23_hgo6i"]
+[ext_resource type="Texture2D" uid="uid://dynupapv2542v" path="res://Sprites/Enemy/ghoul-sheet.png" id="24_t5u8i"]
+[ext_resource type="Texture2D" uid="uid://chnmpbmoaaarg" path="res://Sprites/Enemy/gargoyle-sheet.png" id="25_r10wf"]
+[ext_resource type="Texture2D" uid="uid://dsa1nrxnnh3nl" path="res://Sprites/Player/player-tilesheet.png" id="26_7rkdd"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -115,6 +139,170 @@ offset_right = 436.0
 offset_bottom = 166.0
 text = "No sound, sorry :(
 I'll make this pretty later if I have time
-(Spoiler Alert: I won't have time)"
+(Spoiler Alert: I made it look worse)"
+
+[node name="Crossbow" type="Sprite2D" parent="."]
+position = Vector2(427, 309)
+texture = ExtResource("3_4v7yl")
+
+[node name="FireStaff" type="Sprite2D" parent="."]
+position = Vector2(301, 317)
+texture = ExtResource("4_t8cnb")
+
+[node name="Puddle" type="Sprite2D" parent="."]
+position = Vector2(230, 179)
+texture = ExtResource("5_jnjhe")
+
+[node name="Puddle2" type="Sprite2D" parent="."]
+position = Vector2(437, 169)
+texture = ExtResource("5_jnjhe")
+
+[node name="Puddle3" type="Sprite2D" parent="."]
+position = Vector2(296, 110)
+texture = ExtResource("5_jnjhe")
+
+[node name="Sludge" type="Sprite2D" parent="."]
+position = Vector2(278, 173)
+texture = ExtResource("6_h6d5u")
+
+[node name="Sludge2" type="Sprite2D" parent="."]
+position = Vector2(239, 111)
+texture = ExtResource("6_h6d5u")
+
+[node name="Sword" type="Sprite2D" parent="."]
+position = Vector2(139, 18)
+texture = ExtResource("7_vylrh")
+
+[node name="Sword2" type="Sprite2D" parent="."]
+position = Vector2(107, 16)
+texture = ExtResource("7_vylrh")
+
+[node name="Loot2" type="Sprite2D" parent="."]
+position = Vector2(445, 212)
+texture = ExtResource("8_n32qp")
+
+[node name="Loot3" type="Sprite2D" parent="."]
+position = Vector2(446, 274)
+texture = ExtResource("9_2tpm0")
+
+[node name="Loot1" type="Sprite2D" parent="."]
+position = Vector2(400, 317)
+texture = ExtResource("10_iwaos")
+
+[node name="Food" type="Sprite2D" parent="."]
+position = Vector2(13, 351)
+texture = ExtResource("11_5jxhm")
+
+[node name="Food2" type="Sprite2D" parent="."]
+position = Vector2(30, 352)
+texture = ExtResource("11_5jxhm")
+
+[node name="Food3" type="Sprite2D" parent="."]
+position = Vector2(48, 352)
+texture = ExtResource("11_5jxhm")
+
+[node name="Food4" type="Sprite2D" parent="."]
+position = Vector2(68, 353)
+texture = ExtResource("11_5jxhm")
+
+[node name="Food5" type="Sprite2D" parent="."]
+position = Vector2(87, 352)
+texture = ExtResource("11_5jxhm")
+
+[node name="Food6" type="Sprite2D" parent="."]
+position = Vector2(109, 352)
+texture = ExtResource("11_5jxhm")
+
+[node name="Food7" type="Sprite2D" parent="."]
+position = Vector2(128, 354)
+texture = ExtResource("11_5jxhm")
+
+[node name="Food8" type="Sprite2D" parent="."]
+position = Vector2(98, 353)
+texture = ExtResource("11_5jxhm")
+
+[node name="Food9" type="Sprite2D" parent="."]
+position = Vector2(144, 352)
+texture = ExtResource("11_5jxhm")
+
+[node name="Food10" type="Sprite2D" parent="."]
+position = Vector2(58, 354)
+texture = ExtResource("11_5jxhm")
+
+[node name="Whetstone" type="Sprite2D" parent="."]
+position = Vector2(610, 140)
+texture = ExtResource("12_0wjlg")
+
+[node name="Lastchance" type="Sprite2D" parent="."]
+position = Vector2(225, 77)
+texture = ExtResource("13_7r2iv")
+
+[node name="Lastchance2" type="Sprite2D" parent="."]
+position = Vector2(244, 78)
+texture = ExtResource("13_7r2iv")
+
+[node name="Nothing" type="Sprite2D" parent="."]
+position = Vector2(307, 178)
+texture = ExtResource("14_eceav")
+
+[node name="Nothing2" type="Sprite2D" parent="."]
+position = Vector2(227, 141)
+texture = ExtResource("14_eceav")
+
+[node name="Windblast" type="Sprite2D" parent="."]
+position = Vector2(261, 282)
+texture = ExtResource("15_syfdq")
+
+[node name="Holy" type="Sprite2D" parent="."]
+position = Vector2(55, 248)
+texture = ExtResource("16_m6uir")
+
+[node name="Freeze" type="Sprite2D" parent="."]
+position = Vector2(81, 195)
+texture = ExtResource("17_6unp4")
+
+[node name="Dodge" type="Sprite2D" parent="."]
+position = Vector2(260, 180)
+texture = ExtResource("18_x2d84")
+
+[node name="Banshee-sheet" type="Sprite2D" parent="."]
+position = Vector2(50, 50)
+texture = ExtResource("19_3l0c6")
+hframes = 2
+
+[node name="Bat-sheet" type="Sprite2D" parent="."]
+position = Vector2(216, 13)
+texture = ExtResource("20_hix48")
+hframes = 2
+
+[node name="Zombie-sheet" type="Sprite2D" parent="."]
+position = Vector2(24, 130)
+texture = ExtResource("21_at7un")
+hframes = 2
+
+[node name="Spectre-sheet" type="Sprite2D" parent="."]
+position = Vector2(53, 145)
+texture = ExtResource("22_jgbni")
+hframes = 2
+
+[node name="Revenant-sheet" type="Sprite2D" parent="."]
+position = Vector2(244, 40)
+texture = ExtResource("23_hgo6i")
+hframes = 2
+
+[node name="Ghoul-sheet" type="Sprite2D" parent="."]
+position = Vector2(26, 77)
+texture = ExtResource("24_t5u8i")
+hframes = 2
+
+[node name="Gargoyle-sheet" type="Sprite2D" parent="."]
+position = Vector2(45, 172)
+texture = ExtResource("25_r10wf")
+hframes = 2
+
+[node name="Player-tilesheet" type="Sprite2D" parent="."]
+position = Vector2(123, 17)
+texture = ExtResource("26_7rkdd")
+hframes = 4
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
