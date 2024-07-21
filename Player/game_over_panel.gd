@@ -13,6 +13,16 @@ func show_game_over() -> void:
 	tween.play()
 
 
+func _process(delta):
+	if get_parent().get_parent().is_respawning:
+		visible = false
+
+
+func win_game() -> void:
+	$Label.text = "Congrajulashions, you won!\nAfter fighting through the undead horde, you managed to take out the necromancer.  Time to celebrate!"
+	show_game_over()
+
+
 func _on_restart_button_pressed() -> void:
 	get_tree().reload_current_scene()
 

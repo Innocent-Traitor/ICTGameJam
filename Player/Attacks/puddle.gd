@@ -22,6 +22,8 @@ func _ready() -> void:
 			damage = 2
 		4:
 			damage = 3
+	
+	damage *= player.attack
 
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(0.1, 0.1), 0)
@@ -41,14 +43,15 @@ func _on_timer_timeout(): # Despawns the Ice Spear after the timer ends
 
 func _on_attack_timer_timeout():
 	for bodies in get_overlapping_areas():
-		if bodies.is_in_group("player"):
-			return
-		else:
-			bodies.get_parent().get_parent()._on_hurt_box_hurt(damage, angle, knockback)
-			bodies.get_parent().get_parent().movement_speed -= 5
-			await get_tree().create_timer(0.5).timeout
-			if is_instance_valid(bodies):
-				bodies.get_parent().get_parent().movement_speed += 5
-	
+		if is_instance_valid(bodies):
+			if bodies.is_in_group("player"):
+				pass
+			else:
+				bodies.get_parent().get_parent()._on_hurt_box_hurt(damage, angle, knockback)
+				bodies.get_parent().get_parent().movement_speed -= 5
+				await get_tree().create_timer(0.5).timeout
+				if is_instance_valid(bodies):
+					bodies.get_parent().get_parent().movement_speed += 5
+		
 	$AttackTimer.wait_time = 0.5
 	$AttackTimer.start()

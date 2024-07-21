@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="ICTGameJam"
-run/main_scene="res://Utils/world.tscn"
+config/name="Undead, Comeback!"
+config/version="1.0.0"
+run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/image="res://Sprites/GUI/MoonsoftStudios2-01.png"
+config/icon="res://Sprites/Items/Weapons/sword.png"
 
 [autoload]
 
@@ -89,4 +91,4 @@ click={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.517647, 0.776471, 0.411765, 1)
+environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)

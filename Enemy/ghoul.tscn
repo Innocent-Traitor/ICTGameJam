@@ -34,9 +34,10 @@ collision_layer = 64
 collision_mask = 96
 script = ExtResource("1_42igl")
 movement_speed = 15.0
-hp = 25
+hp = 75
 knockback_recovery = 5.0
-experience = 10
+experience = 15
+enemy_damage = 15
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lg17s")

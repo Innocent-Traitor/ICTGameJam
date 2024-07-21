@@ -22,6 +22,8 @@ func _ready() -> void:
 		4:
 			damage = 8
 	
+	damage *= player.attack
+	
 	angle = Vector2(randf_range(-5, 5), randf_range(-5, 5))
 
 	var tween = create_tween()

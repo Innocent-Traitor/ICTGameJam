@@ -4,6 +4,14 @@ var summon_enemy = preload("res://Enemy/revenant.tscn")
 
 func _ready():
 	speed = 25
+	hurtbox.connect("hurt", Callable(self, "_on_hurt_box_hurt"))
+
+func _on_hurt_box_hurt(damage, angle, knockback_amount):
+	hp -= damage * player.attack
+	knockback = angle * knockback_amount
+	if hp <= 0:
+		death()
+	#else:
 
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)

@@ -49,6 +49,7 @@ var experience = 0
 var collected_experience = 0
 var speed = 100
 var decay_percentage = 1
+var is_respawning = false
 
 var enemy_close = []
 
@@ -220,7 +221,7 @@ func upgrade_character(upgrade): # Called in item_option
 
 func gain_ability(ability) -> void:
 	max_health = non_decay_max_health
-	#health  = non_decay_health / 2
+	health  = non_decay_health / 2
 	hud.update_health(health, max_health)
 	health_regen = non_decay_health_regen
 	attack = non_decay_attack
@@ -239,6 +240,11 @@ func gain_ability(ability) -> void:
 			passive_ability = ability
 	
 	hud.update_ability_gui(ability, type)
+	is_respawning = false
+	$HurtBox.monitorable = true
+	$HurtBox.monitoring = true
+	$GrabArea.monitoring = true
+	$GrabArea.monitorable = true
 	get_tree().paused = false
 
 func handle_death() -> void:
@@ -264,8 +270,16 @@ func handle_death() -> void:
 		return
 
 	if hud.can_respawn():
+		is_respawning = true
+		$HurtBox.monitorable = false
+		$HurtBox.monitoring = false
 		hud.start_respawn()
 	else:
+		if is_respawning == false:
+			return
+		speed_mult = 0
+		$GrabArea.monitoring = false
+		$GrabArea.monitorable = false
 		hud.game_over()
 
 ## Pick a random target from the enemy_close array, and return the postion
@@ -282,7 +296,7 @@ func _unhandled_key_input(event):
 			return
 		match active_ability:
 			'freezeblast1':
-				hud.set_ability_cooldown("Active", 150)
+				hud.set_ability_cooldown("Active", 90)
 				active_cooldown = true
 				var enemies = get_tree().get_first_node_in_group('enemyspawn').get_children()
 				var frozen_enemies = []
@@ -294,12 +308,12 @@ func _unhandled_key_input(event):
 				
 				await get_tree().create_timer(5).timeout
 				for enemy in frozen_enemies:
-					if enemy.is_inside_tree():
+					if is_instance_valid(enemy):
 						enemy.modulate = Color(1, 1, 1, 1)
 						enemy.speed = enemy.movement_speed
 			
 			'freezeblast2':
-				hud.set_ability_cooldown("Active", 150)
+				hud.set_ability_cooldown("Active", 90)
 				active_cooldown = true
 				var enemies = get_tree().get_first_node_in_group('enemyspawn').get_children()
 				var frozen_enemies = []
@@ -317,7 +331,7 @@ func _unhandled_key_input(event):
 						enemy._on_hurt_box_hurt(5, Vector2.ZERO, 0)
 
 			'rush1':
-				hud.set_ability_cooldown("Active", 90)
+				hud.set_ability_cooldown("Active", 60)
 				active_cooldown = true
 				var non_spd = non_decay_speed_mult
 				var spd = speed_mult
@@ -334,7 +348,7 @@ func _unhandled_key_input(event):
 				defense = def
 				
 			'rush2':
-				hud.set_ability_cooldown("Active", 90)
+				hud.set_ability_cooldown("Active", 60)
 				active_cooldown = true
 				var non_spd = non_decay_speed_mult
 				var spd = speed_mult
@@ -355,7 +369,7 @@ func _unhandled_key_input(event):
 			return
 		match secondary_ability:
 			'dodge1':
-				hud.set_ability_cooldown("Secondary", 15)
+				hud.set_ability_cooldown("Secondary", 10)
 				secondary_cooldown = true
 				speed_mult += 1.5
 				$HurtBox.monitorable = false
@@ -381,7 +395,7 @@ func _unhandled_key_input(event):
 				$CollisionShape2D.disabled = false
 
 			'windblast1':
-				hud.set_ability_cooldown("Secondary", 3)
+				hud.set_ability_cooldown("Secondary", 30)
 				secondary_cooldown = true
 				var enemies = get_tree().get_first_node_in_group('enemyspawn').get_children()
 				for enemy in enemies:
@@ -389,7 +403,7 @@ func _unhandled_key_input(event):
 						enemy._on_hurt_box_hurt(0,  -enemy.global_position.direction_to(global_position), 200)
 			
 			'windblast2':
-				hud.set_ability_cooldown("Secondary", 60)
+				hud.set_ability_cooldown("Secondary", 30)
 				secondary_cooldown = true
 				var enemies = get_tree().get_first_node_in_group('enemyspawn').get_children()
 				for enemy in enemies:
@@ -416,12 +430,12 @@ func calculate_experience(gem_exp):
 
 func calculate_experiencecap():
 	var exp_cap = level
-	if level < 20:
+	if level < 5:
 		exp_cap = level * 5
-	elif experience < 40:
-		exp_cap = 95 + (level - 19) * 8
+	elif level < 10:
+		exp_cap = 95 + (level - 5) * 8
 	else:
-		exp_cap = 255 + (level - 39) * 12
+		exp_cap = 255 + (level - 10) * 12
 		
 	return exp_cap
 #endregion
@@ -462,9 +476,10 @@ func _on_decay_timer_timeout():
 	var max_decay
 	var decay_rate
 	if passive_ability == "holy1" or passive_ability == "holy2":
-		decay_rate = 0.0025
+		decay_rate = 0.005
 	else:
-		decay_rate = 0.000175
+		decay_rate = 0.01
+		
 	if passive_ability == "holy2":
 		max_decay = 0.25
 	else:

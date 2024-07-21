@@ -2,6 +2,7 @@ extends EnemyBody
 
 func _ready():
 	speed = 15
+	hurtbox.connect("hurt", Callable(self, "_on_hurt_box_hurt"))
 
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
@@ -16,3 +17,10 @@ func _physics_process(delta):
 		sprite.flip_h = false
 	elif direction.x < -0.1:
 		sprite.flip_h = true
+
+func _on_hurt_box_hurt(damage, angle, knockback_amount):
+	hp -= damage * player.attack
+	knockback = angle * knockback_amount
+	if hp <= 0:
+		death()
+	#else:

@@ -29,6 +29,8 @@ func _ready() -> void:
         4:
             damage = 10
             animation = "Attack3"
+    
+    damage *= player.attack
         
     $AnimationPlayer.play(animation)
 

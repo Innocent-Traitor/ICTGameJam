@@ -214,7 +214,7 @@ tint_progress = Color(0.745098, 0, 0, 1)
 [node name="UndeadBar" type="TextureProgressBar" parent="BarContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-max_value = 120.0
+max_value = 45.0
 nine_patch_stretch = true
 texture_under = ExtResource("5_w6rtu")
 texture_progress = ExtResource("5_w6rtu")

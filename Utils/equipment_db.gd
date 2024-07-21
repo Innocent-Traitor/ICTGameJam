@@ -63,7 +63,7 @@ const UPGRADES = {
 		"icon": WEAPON_PATH + "crossbow.png",
 		"displayname": "Crossbow\n",
 		"details": "A crossbow that pierces enemies",
-		"prerequisite": [""],
+		"prerequisite": [],
 		"type": "weapon"
 	},
 	"crossbow2": {
@@ -91,7 +91,7 @@ const UPGRADES = {
 		"icon": WEAPON_PATH + "fire_staff.png",
 		"displayname": "Fire Staff\n",
 		"details": "Drop a fireball around yourself",
-		"prerequisite": [""],
+		"prerequisite": [],
 		"type": "weapon"
 	},
 	"fire2": {
@@ -119,7 +119,7 @@ const UPGRADES = {
 		"icon": WEAPON_PATH + "sludge.png",
 		"displayname": "Sludge Bucket\n",
 		"details": "Throw a puddle of sludge randomly and deal damage over time",
-		"prerequisite": [""],
+		"prerequisite": [],
 		"type": "weapon"
 	},
 	"sludge2": {

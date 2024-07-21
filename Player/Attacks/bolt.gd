@@ -33,6 +33,8 @@ func _ready() -> void:
 		4:
 			damage = 15
 			hp = 9999
+		
+	damage *= player.attack
 	
 	# Tweening
 	#self.scale = Vector2(0.25, 0.25)

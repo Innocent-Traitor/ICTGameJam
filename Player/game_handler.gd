@@ -40,6 +40,9 @@ func change_time(argtime = 0):
 	if get_s < 10:
 		get_s = str(0,get_s)
 	time_label.text = str(get_m,":",get_s)
+	if time_label.text == "05:00":
+		get_tree().paused = true
+		loss.win_game()
 
 func start_levelup() -> void:
 	levelup.handle_levelup()
@@ -110,7 +113,6 @@ func set_ability_cooldown(type, cooldown) -> void:
 
 
 func game_over() -> void:
-	get_tree().paused = true
 	loss.show_game_over()
 
 func can_respawn() -> bool:

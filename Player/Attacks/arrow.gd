@@ -22,13 +22,15 @@ func _ready() -> void:
 	# Compare the level to set the correct stats
 	match level:
 		1:
-			damage = 2
+			damage = 2 
 		2:
 			damage = 4
 		3:
 			damage = 4
 		4:
 			damage = 7
+	
+	damage *= player.attack
 	
 	# Tweening
 	#self.scale = Vector2(0.25, 0.25)
