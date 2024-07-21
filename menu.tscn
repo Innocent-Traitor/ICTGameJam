@@ -1,0 +1,116 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0k8dgssxd05g"]
+
+[ext_resource type="Texture2D" uid="uid://dr4pa26u0mxfv" path="res://Sprites/GUI/MoonsoftStudios2-01.png" id="1_6uaon"]
+[ext_resource type="Script" path="res://start_button.gd" id="1_f4flk"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.258824, 0.32549, 0.337255, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.1
+anchor_right = 0.15
+anchor_bottom = 0.1
+offset_right = 156.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 48
+text = "Undead,
+Comeback!"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 130.0
+offset_right = 223.0
+offset_bottom = 186.0
+text = "Start the
+Game!"
+script = ExtResource("1_f4flk")
+
+[node name="Controls" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.095
+anchor_top = 0.55
+anchor_right = 0.095
+anchor_bottom = 0.55
+offset_right = 246.0
+offset_bottom = 132.0
+theme_override_font_sizes/font_size = 32
+text = "Controls:
+WASD - Movement
+Mouse - Aiming
+Space - Active Ability
+Shift - Secondary Ability"
+horizontal_alignment = 1
+
+[node name="Story" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 0
+offset_left = 310.0
+offset_top = 9.0
+offset_right = 610.0
+offset_bottom = 111.0
+text = "You are warrior tasked with taking down a necromancer. Once you stepped into their realm, you were cursed and the world began to shift. Fight against their armies and take them down! Good Luck, Have Fun. (or whatever warriors say)
+
+Make sure you let the green meter fill up, if you die while it's filled up, you get another chance and a new ability!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 179.0
+offset_right = 632.0
+offset_bottom = 354.0
+texture = ExtResource("1_6uaon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="."]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 0
+offset_left = 290.0
+offset_top = 181.0
+offset_right = 465.0
+offset_bottom = 298.0
+text = "Created and Developed by
+James Moffett | Innocent Traitor
+Web: moonsoftstudios.com
+Discord: innocent_traitor
+
+Some Art Assets from Kenney.nl
+
+Moral Support from
+Winston (Cat) :D"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 119.0
+offset_right = 471.0
+offset_bottom = 161.0
+text = "No sound, sorry :(
+I'll make this pretty later if I have time
+(Spoiler Alert: I won't have time)"
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

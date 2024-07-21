@@ -26,6 +26,7 @@ var exp_gem = preload("res://Objects/loot.tscn")
 
 var speed = movement_speed
 
+
 # Signals
 signal remove_from_array(object)
 
@@ -34,6 +35,7 @@ func _ready():
 	sprite.play("default") # Plays walk animation
 	hitbox.damage = enemy_damage
 	hurtbox.connect("hurt", Callable(self, "_on_hurt_box_hurt"))
+	speed = movement_speed
 
 
 func death():

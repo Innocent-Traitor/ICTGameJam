@@ -24,7 +24,7 @@ var non_decay_defense : float = 0.0
 var non_decay_speed_mult : float = 1.0
 
 var max_health = non_decay_max_health
-var health  = 1
+var health  = non_decay_health
 var health_regen = non_decay_health_regen
 var attack = non_decay_attack
 var defense = non_decay_defense

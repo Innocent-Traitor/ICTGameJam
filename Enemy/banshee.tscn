@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvy5aih3yom2v"]
+
+[ext_resource type="Script" path="res://Enemy/banshee.gd" id="1_fwbkt"]
+[ext_resource type="Texture2D" uid="uid://dd2rirrjj6cbu" path="res://Sprites/Enemy/banshee-sheet.png" id="2_ue4ea"]
+[ext_resource type="PackedScene" uid="uid://b1pkc6tnk7gih" path="res://Enemy/enemy_base.tscn" id="3_le6qb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_um82x"]
+atlas = ExtResource("2_ue4ea")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smoju"]
+atlas = ExtResource("2_ue4ea")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lg17s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_um82x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smoju")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrf80"]
+radius = 6.0
+
+[node name="Banshee" type="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 96
+script = ExtResource("1_fwbkt")
+hp = 250
+knockback_recovery = 10.0
+experience = 50
+enemy_damage = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lg17s")
+frame_progress = 0.476335
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xrf80")
+debug_color = Color(0, 0.129412, 0.156863, 0.419608)
+
+[node name="EnemyBase" parent="." instance=ExtResource("3_le6qb")]
+
+[node name="HurtBox" parent="EnemyBase" index="0"]
+collision_mask = 16
+HurtBoxType = 1
+
+[node name="HitBox" parent="EnemyBase" index="1"]
+collision_mask = 2
+
+[node name="ScreamTimer" type="Timer" parent="."]
+wait_time = 7.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="ScreamTimer" to="." method="_on_summon_timer_timeout"]
+
+[editable path="EnemyBase"]
+[editable path="EnemyBase/HurtBox"]
+[editable path="EnemyBase/HitBox"]

@@ -29,6 +29,7 @@ window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/scale=1.75
 window/stretch/scale_mode="integer"
+mouse_cursor/custom_image="res://Sprites/GUI/cursor.png"
 
 [gui]
 

@@ -215,7 +215,6 @@ tint_progress = Color(0.745098, 0, 0, 1)
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 max_value = 120.0
-value = 115.0
 nine_patch_stretch = true
 texture_under = ExtResource("5_w6rtu")
 texture_progress = ExtResource("5_w6rtu")
@@ -555,3 +554,5 @@ vertical_alignment = 1
 [connection signal="mouse_exited" from="AbilityPanel/TextureContainer/Item1" to="AbilityPanel/TextureContainer/Item1" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="AbilityPanel/TextureContainer/Item2" to="AbilityPanel/TextureContainer/Item2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="AbilityPanel/TextureContainer/Item2" to="AbilityPanel/TextureContainer/Item2" method="_on_mouse_exited"]
+[connection signal="pressed" from="GameOverPanel/HBoxContainer/RestartButton" to="GameOverPanel" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOverPanel/HBoxContainer/MenuButton" to="GameOverPanel" method="_on_menu_button_pressed"]

@@ -1,10 +1,9 @@
 extends EnemyBody
 
+var summon_enemy = preload("res://Enemy/revenant.tscn")
+
 func _ready():
-	scale = Vector2(0.1, 0.1)
-	var tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(1, 1), 1)
-	tween.play()
+	speed = 25
 
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
@@ -19,3 +18,16 @@ func _physics_process(delta):
 		sprite.flip_h = false
 	elif direction.x < -0.1:
 		sprite.flip_h = true
+
+
+func _on_summon_timer_timeout() -> void:
+	speed = 0
+	for i in range(5):
+		var enemy = summon_enemy.instantiate()
+		enemy.global_position = Vector2(global_position.x + randf_range(-50, 50), global_position.y + randf_range(-50, 50))
+		get_parent().add_child(enemy)
+		await get_tree().create_timer(0.25).timeout
+	speed = 25
+	$SummonTimer.wait_time = 15
+	$SummonTimer.start()
+

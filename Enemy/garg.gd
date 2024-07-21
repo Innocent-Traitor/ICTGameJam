@@ -1,10 +1,7 @@
 extends EnemyBody
 
 func _ready():
-	scale = Vector2(0.1, 0.1)
-	var tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(1, 1), 1)
-	tween.play()
+	speed = 25
 
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
